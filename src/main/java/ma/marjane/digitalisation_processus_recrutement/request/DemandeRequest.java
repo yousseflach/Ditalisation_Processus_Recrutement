@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class RequesReq {
+public class DemandeRequest {
 
     @NotEmpty(message = "first title required")
     @NotBlank(message = "first title required")

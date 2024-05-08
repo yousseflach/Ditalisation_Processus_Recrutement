@@ -1,7 +1,7 @@
 package ma.marjane.digitalisation_processus_recrutement.service;
 
 import ma.marjane.digitalisation_processus_recrutement.entity.Stage;
-import ma.marjane.digitalisation_processus_recrutement.repository.InternshipRepository;
+import ma.marjane.digitalisation_processus_recrutement.repository.StageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import java.util.UUID;
 public class InternshipService {
 
     @Autowired
-    private InternshipRepository repository;
+    private StageRepository repository;
 
     public List<Stage> findAll() {
         return repository.findAll();

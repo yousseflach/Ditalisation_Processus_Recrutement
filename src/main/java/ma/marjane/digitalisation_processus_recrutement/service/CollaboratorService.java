@@ -1,7 +1,7 @@
 package ma.marjane.digitalisation_processus_recrutement.service;
 
 import ma.marjane.digitalisation_processus_recrutement.entity.Collaborateur;
-import ma.marjane.digitalisation_processus_recrutement.repository.CollaboratorRepository;
+import ma.marjane.digitalisation_processus_recrutement.repository.CollaborateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import java.util.UUID;
 public class CollaboratorService {
 
     @Autowired
-    private CollaboratorRepository repository;
+    private CollaborateurRepository repository;
 
     public List<Collaborateur> findAll() {
         return repository.findAll();

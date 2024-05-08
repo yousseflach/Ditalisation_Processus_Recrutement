@@ -31,7 +31,7 @@ public class DirectionOuMagasin {
     @Column(insertable = false)
     private LocalDateTime dateDeModification;
 
-    @OneToMany(mappedBy = "directionOrStore", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "directionOuMagasin", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Demande> demandes; // Liste des demandes associées à cette direction ou magasin.
 
 }

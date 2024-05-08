@@ -1,7 +1,7 @@
 package ma.marjane.digitalisation_processus_recrutement.service;
 
 import ma.marjane.digitalisation_processus_recrutement.entity.Tâche;
-import ma.marjane.digitalisation_processus_recrutement.repository.TaskRepository;
+import ma.marjane.digitalisation_processus_recrutement.repository.TâcheRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import java.util.UUID;
 public class TaskService {
 
     @Autowired
-    private TaskRepository repository;
+    private TâcheRepository repository;
 
     public List<Tâche> findAll() {
         return repository.findAll();
