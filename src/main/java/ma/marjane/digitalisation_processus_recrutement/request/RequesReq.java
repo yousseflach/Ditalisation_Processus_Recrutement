@@ -23,13 +23,13 @@ public class RequesReq {
     @NotBlank(message = "first type required")
     private String type;
 
-    @Email(message = "Email is not valid")
-    @NotEmpty(message = "first name required")
-    @NotBlank(message = "first name required")
-    private String email;
-
-    @NotEmpty(message = "first name required")
-    @NotBlank(message = "first name required")
-    @Size(min = 8, message = "Password should be at least 8 characters")
-    private String password;
+//    @Email(message = "Email is not valid")
+//    @NotEmpty(message = "first name required")
+//    @NotBlank(message = "first name required")
+//    private String email;
+//
+//    @NotEmpty(message = "first name required")
+//    @NotBlank(message = "first name required")
+//    @Size(min = 8, message = "Password should be at least 8 characters")
+//    private String password;
 }

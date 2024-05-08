@@ -1,8 +1,10 @@
 package ma.marjane.digitalisation_processus_recrutement.repository;
 
-import ma.marjane.digitalisation_processus_recrutement.entity.Task;
+import ma.marjane.digitalisation_processus_recrutement.entity.Tâche;
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.UUID;
+import org.springframework.stereotype.Repository;
 
-public interface TaskRepository extends JpaRepository<Task, UUID> {
+import java.util.UUID;
+@Repository
+public interface TaskRepository extends JpaRepository<Tâche, UUID> {
 }

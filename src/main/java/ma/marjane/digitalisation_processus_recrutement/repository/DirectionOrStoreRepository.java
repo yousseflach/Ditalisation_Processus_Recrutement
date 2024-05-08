@@ -1,8 +1,10 @@
 package ma.marjane.digitalisation_processus_recrutement.repository;
 
-import ma.marjane.digitalisation_processus_recrutement.entity.DirectionOrStore;
+import ma.marjane.digitalisation_processus_recrutement.entity.DirectionOuMagasin;
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.UUID;
+import org.springframework.stereotype.Repository;
 
-public interface DirectionOrStoreRepository extends JpaRepository<DirectionOrStore, UUID> {
+import java.util.UUID;
+@Repository
+public interface DirectionOrStoreRepository extends JpaRepository<DirectionOuMagasin, UUID> {
 }

@@ -10,13 +10,13 @@ public class RequestService {
     private final InternshipService internshipService;
     private final CollaboratorService collaboratorService;
 
-    public void saveRequest(RequestReq request) {
-        if () {
-            return internshipService.save((Internship) request);
-        } else if (request instanceof Collaborator) {
-            return collaboratorService.save((Collaborator) request);
-        }
-    }
+//    public void saveRequest(RequestReq request) {
+//        if () {
+//            return internshipService.save((Internship) request);
+//        } else if (request instanceof Collaborator) {
+//            return collaboratorService.save((Collaborator) request);
+//        }
+//    }
 
 
 }

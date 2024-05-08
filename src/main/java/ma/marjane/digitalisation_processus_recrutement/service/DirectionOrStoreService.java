@@ -1,6 +1,6 @@
 package ma.marjane.digitalisation_processus_recrutement.service;
 
-import ma.marjane.digitalisation_processus_recrutement.entity.DirectionOrStore;
+import ma.marjane.digitalisation_processus_recrutement.entity.DirectionOuMagasin;
 import ma.marjane.digitalisation_processus_recrutement.repository.DirectionOrStoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,15 +15,15 @@ public class DirectionOrStoreService {
     @Autowired
     private DirectionOrStoreRepository repository;
 
-    public List<DirectionOrStore> findAll() {
+    public List<DirectionOuMagasin> findAll() {
         return repository.findAll();
     }
 
-    public Optional<DirectionOrStore> findById(UUID id) {
+    public Optional<DirectionOuMagasin> findById(UUID id) {
         return repository.findById(id);
     }
 
-    public DirectionOrStore save(DirectionOrStore directionOrStore) {
+    public DirectionOuMagasin save(DirectionOuMagasin directionOrStore) {
         return repository.save(directionOrStore);
     }
 
