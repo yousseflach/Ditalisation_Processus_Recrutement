@@ -1,8 +1,10 @@
 package ma.marjane.digitalisation_processus_recrutement.repository;
 
-import ma.marjane.digitalisation_processus_recrutement.entity.Internship;
+import ma.marjane.digitalisation_processus_recrutement.entity.Stage;
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.UUID;
+import org.springframework.stereotype.Repository;
 
-public interface InternshipRepository extends JpaRepository<Internship, UUID> {
+import java.util.UUID;
+@Repository
+public interface InternshipRepository extends JpaRepository<Stage, UUID> {
 }

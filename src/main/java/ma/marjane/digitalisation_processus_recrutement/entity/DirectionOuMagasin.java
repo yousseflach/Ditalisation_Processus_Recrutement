@@ -15,22 +15,23 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class DirectionOrStore {
+public class DirectionOuMagasin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id; // Utilisation d'un UUID pour l'ID si vous ne fournissez pas de spécifications de type de données spécifiques pour l'ID.
 
-    private String name; // Nom de la direction ou du magasin.
+    private String nom; // Nom de la direction ou du magasin.
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime dateDeCreation;
 
     @LastModifiedDate
     @Column(insertable = false)
-    private LocalDateTime updatedAt;
+    private LocalDateTime dateDeModification;
 
     @OneToMany(mappedBy = "directionOrStore", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Request> requests; // Liste des requêtes associées à cette direction ou magasin.
+    private List<Demande> demandes; // Liste des demandes associées à cette direction ou magasin.
+
 }

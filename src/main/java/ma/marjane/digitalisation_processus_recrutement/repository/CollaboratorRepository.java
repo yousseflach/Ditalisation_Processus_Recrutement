@@ -1,8 +1,11 @@
 package ma.marjane.digitalisation_processus_recrutement.repository;
 
-import ma.marjane.digitalisation_processus_recrutement.entity.Collaborator;
+import ma.marjane.digitalisation_processus_recrutement.entity.Collaborateur;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import java.util.UUID;
 
-public interface CollaboratorRepository extends JpaRepository<Collaborator, UUID> {
+@Repository
+public interface CollaboratorRepository extends JpaRepository<Collaborateur, UUID> {
 }

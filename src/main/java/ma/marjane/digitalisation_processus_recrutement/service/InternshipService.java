@@ -1,6 +1,6 @@
 package ma.marjane.digitalisation_processus_recrutement.service;
 
-import ma.marjane.digitalisation_processus_recrutement.entity.Internship;
+import ma.marjane.digitalisation_processus_recrutement.entity.Stage;
 import ma.marjane.digitalisation_processus_recrutement.repository.InternshipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,15 +15,15 @@ public class InternshipService {
     @Autowired
     private InternshipRepository repository;
 
-    public List<Internship> findAll() {
+    public List<Stage> findAll() {
         return repository.findAll();
     }
 
-    public Optional<Internship> findById(UUID id) {
+    public Optional<Stage> findById(UUID id) {
         return repository.findById(id);
     }
 
-    public Internship save(Internship internship) {
+    public Stage save(Stage internship) {
         return repository.save(internship);
     }
 
