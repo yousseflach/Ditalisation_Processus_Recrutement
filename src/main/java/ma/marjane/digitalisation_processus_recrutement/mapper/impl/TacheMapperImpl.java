@@ -2,10 +2,12 @@ package ma.marjane.digitalisation_processus_recrutement.mapper.impl;
 
 import ma.marjane.digitalisation_processus_recrutement.dto.TacheDto;
 import ma.marjane.digitalisation_processus_recrutement.entity.Tache;
-import ma.marjane.digitalisation_processus_recrutement.mapper.TacheMapper;
+import ma.marjane.digitalisation_processus_recrutement.mapper.BaseMapper;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
-public class TacheMapperImpl implements TacheMapper {
+@Component
+public class TacheMapperImpl implements BaseMapper<Tache, TacheDto> {
 
     ModelMapper modelMapper = new ModelMapper();
 

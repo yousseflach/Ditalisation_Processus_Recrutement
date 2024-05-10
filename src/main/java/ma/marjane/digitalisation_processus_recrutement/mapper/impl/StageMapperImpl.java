@@ -2,10 +2,12 @@ package ma.marjane.digitalisation_processus_recrutement.mapper.impl;
 
 import ma.marjane.digitalisation_processus_recrutement.dto.StageDto;
 import ma.marjane.digitalisation_processus_recrutement.entity.Stage;
-import ma.marjane.digitalisation_processus_recrutement.mapper.StageMapper;
+import ma.marjane.digitalisation_processus_recrutement.mapper.BaseMapper;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
-public class StageMapperImpl implements StageMapper {
+@Component
+public class StageMapperImpl implements BaseMapper<Stage, StageDto> {
 
     ModelMapper modelMapper = new ModelMapper();
 

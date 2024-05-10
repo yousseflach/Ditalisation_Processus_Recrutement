@@ -2,10 +2,12 @@ package ma.marjane.digitalisation_processus_recrutement.mapper.impl;
 
 import ma.marjane.digitalisation_processus_recrutement.dto.NotificationDto;
 import ma.marjane.digitalisation_processus_recrutement.entity.Notification;
-import ma.marjane.digitalisation_processus_recrutement.mapper.NotificationMapper;
+import ma.marjane.digitalisation_processus_recrutement.mapper.BaseMapper;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
-public class NotificationMapperImpl implements NotificationMapper {
+@Component
+public class NotificationMapperImpl implements BaseMapper<Notification, NotificationDto> {
 
     ModelMapper modelMapper = new ModelMapper();
 
