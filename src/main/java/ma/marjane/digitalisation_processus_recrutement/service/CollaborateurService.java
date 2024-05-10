@@ -28,9 +28,9 @@ public class CollaborateurService {
         return repository.findById(id);
     }
 
-//    public Collaborateur save(CollaborateurDto collaborateurDto) {
-//        return repository.save();
-//    }
+    public Collaborateur save(CollaborateurDto collaborateurDto) {
+        return repository.save(collaborateurMapper.convertToEntity(collaborateurDto));
+    }
 
     public void deleteById(UUID id) {
         repository.deleteById(id);

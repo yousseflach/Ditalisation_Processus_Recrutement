@@ -1,36 +1,36 @@
-#spring:
-#  application:
-#    name: Digitalisation_Processus_Recrutement
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/processus_recrutement?createDatabaseIfNotExist=true&useSSL=false  # Update URL for MySQL
-#    username: root
-#    driver-class-name: com.mysql.cj.jdbc.Driver  # Update driver class for MySQL
-#  jpa:
-#    hibernate:
-#      ddl-auto: update  # Keep your existing settings
-#    show-sql: true  # Keep your existing settings
-#    properties:
-#      hibernate:
-#        format_sql: true  # Keep your existing settings
-#    database: mysql  # Update database type to MySQL
-#    database-platform: org.hibernate.dialect.MySQLDialect  # Update dialect for MySQL
 spring:
   application:
     name: Digitalisation_Processus_Recrutement
   datasource:
-    url: jdbc:sqlserver://alias_sql_prd.cofarma.co.ma:1433;encrypt=true;trustServerCertificate=true;databaseName=HRRecrutement  # URL pour la base de données SQL Server  # Mettez à jour l'URL avec les informations de votre base de données SQL Server
-    username: userhr
-    password: GhTQkNEYjM
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver  # Utilisez le pilote JDBC SQL Server
+    url: jdbc:mysql://localhost:3306/processus_recrutement?createDatabaseIfNotExist=true&useSSL=false  # Update URL for MySQL
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver  # Update driver class for MySQL
   jpa:
     hibernate:
-      ddl-auto: update  # Conservez vos paramètres existants
-    show-sql: true  # Conservez vos paramètres existants
+      ddl-auto: update  # Keep your existing settings
+    show-sql: true  # Keep your existing settings
     properties:
       hibernate:
-        format_sql: true  # Conservez vos paramètres existants
-    database: sql_server  # Mettez à jour le type de base de données en SQL Server
-    database-platform: org.hibernate.dialect.SQLServerDialect  # Utilisez le dialecte SQL Server
+        format_sql: true  # Keep your existing settings
+    database: mysql  # Update database type to MySQL
+    database-platform: org.hibernate.dialect.MySQLDialect  # Update dialect for MySQL
+#spring:
+#  application:
+#    name: Digitalisation_Processus_Recrutement
+#  datasource:
+#    url: jdbc:sqlserver://alias_sql_prd.cofarma.co.ma:1433;encrypt=true;trustServerCertificate=true;databaseName=HRRecrutement  # URL pour la base de données SQL Server  # Mettez à jour l'URL avec les informations de votre base de données SQL Server
+#    username: userhr
+#    password: GhTQkNEYjM
+#    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver  # Utilisez le pilote JDBC SQL Server
+#  jpa:
+#    hibernate:
+#      ddl-auto: update  # Conservez vos paramètres existants
+#    show-sql: true  # Conservez vos paramètres existants
+#    properties:
+#      hibernate:
+#        format_sql: true  # Conservez vos paramètres existants
+#    database: sql_server  # Mettez à jour le type de base de données en SQL Server
+#    database-platform: org.hibernate.dialect.SQLServerDialect  # Utilisez le dialecte SQL Server
   profiles:
     active: dev
   servlet:
