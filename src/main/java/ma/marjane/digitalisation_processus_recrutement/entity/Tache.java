@@ -14,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Tâche {
+public class Tache {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

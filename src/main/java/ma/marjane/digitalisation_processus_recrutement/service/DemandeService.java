@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class RequestService {
+public class DemandeService {
 
-    private final InternshipService internshipService;
-    private final CollaboratorService collaboratorService;
+    private final StageService internshipService;
+    private final CollaborateurService collaboratorService;
 
 //    public void saveRequest(RequestReq request) {
 //        if () {

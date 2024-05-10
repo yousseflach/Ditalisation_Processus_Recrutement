@@ -1,13 +1,9 @@
 package ma.marjane.digitalisation_processus_recrutement.dto;
 
-
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -16,10 +12,19 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DirectionOuMagasinDto {
+public abstract class DemandeDto {
 
     private UUID id;
-    private String nom;
+    private String titre;
+    private String description;
+    private String type;
+    private String titrePoste;
+    private String superviseur;
+    private String formationCandidat;
+    private String niveauÉducation;
+    private String écolesPréférées;
+    private String compétencesTechniques;
+    private String compétencesManageriales;
     private LocalDateTime dateDeCreation;
     private LocalDateTime dateDeModification;
 }

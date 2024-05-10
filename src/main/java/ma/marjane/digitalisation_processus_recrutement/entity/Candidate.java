@@ -24,7 +24,7 @@ public class Candidate {
     private String createur;
 
     @Column(name = "cv")
-    private byte[] cv;
+    private String cv;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)

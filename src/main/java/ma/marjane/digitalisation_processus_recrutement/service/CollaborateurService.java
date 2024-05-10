@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class CollaboratorService {
+public class CollaborateurService {
 
     @Autowired
     private CollaborateurRepository repository;

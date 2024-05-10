@@ -1,6 +1,5 @@
 package ma.marjane.digitalisation_processus_recrutement.service;
 
-import ma.marjane.digitalisation_processus_recrutement.entity.DirectionOuMagasin;
 import ma.marjane.digitalisation_processus_recrutement.repository.DirectionOuMagasinRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,20 +9,20 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class DirectionOrStoreService {
+public class DirectionOuMagasin {
 
     @Autowired
     private DirectionOuMagasinRepository repository;
 
-    public List<DirectionOuMagasin> findAll() {
+    public List<ma.marjane.digitalisation_processus_recrutement.entity.DirectionOuMagasin> findAll() {
         return repository.findAll();
     }
 
-    public Optional<DirectionOuMagasin> findById(UUID id) {
+    public Optional<ma.marjane.digitalisation_processus_recrutement.entity.DirectionOuMagasin> findById(UUID id) {
         return repository.findById(id);
     }
 
-    public DirectionOuMagasin save(DirectionOuMagasin directionOrStore) {
+    public ma.marjane.digitalisation_processus_recrutement.entity.DirectionOuMagasin save(ma.marjane.digitalisation_processus_recrutement.entity.DirectionOuMagasin directionOrStore) {
         return repository.save(directionOrStore);
     }
 

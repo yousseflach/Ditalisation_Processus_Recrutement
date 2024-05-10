@@ -30,7 +30,7 @@ public abstract class Demande {
     private DirectionOuMagasin directionOuMagasin; // Référence à la Direction ou Magasin associé.
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Tâche> tâches;
+    private List<Tache> tâches;
 
     private String titrePoste;
     private String superviseur;
