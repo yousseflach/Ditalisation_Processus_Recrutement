@@ -5,6 +5,7 @@ import ma.marjane.digitalisation_processus_recrutement.dto.TacheDto;
 import ma.marjane.digitalisation_processus_recrutement.entity.Tache;
 import ma.marjane.digitalisation_processus_recrutement.mapper.impl.TacheMapperImpl;
 import ma.marjane.digitalisation_processus_recrutement.repository.TacheRepository;
+import ma.marjane.digitalisation_processus_recrutement.service.TacheService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class TacheServiceImp {
+public class TacheServiceImp implements TacheService {
 
     private final TacheRepository tacheRepository;
     private final TacheMapperImpl tacheMapper;

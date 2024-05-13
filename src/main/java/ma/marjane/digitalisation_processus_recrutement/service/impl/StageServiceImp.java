@@ -5,6 +5,7 @@ import ma.marjane.digitalisation_processus_recrutement.dto.StageDto;
 import ma.marjane.digitalisation_processus_recrutement.entity.Stage;
 import ma.marjane.digitalisation_processus_recrutement.mapper.impl.StageMapperImpl;
 import ma.marjane.digitalisation_processus_recrutement.repository.StageRepository;
+import ma.marjane.digitalisation_processus_recrutement.service.StageService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class StageServiceImp {
+public class StageServiceImp implements StageService {
 
     private final StageRepository stageRepository;
     private final StageMapperImpl stageMapper;

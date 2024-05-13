@@ -5,6 +5,7 @@ import ma.marjane.digitalisation_processus_recrutement.dto.DirectionOuMagasinDto
 import ma.marjane.digitalisation_processus_recrutement.entity.DirectionOuMagasin;
 import ma.marjane.digitalisation_processus_recrutement.mapper.impl.DirectionOuMagasinMapperImpl;
 import ma.marjane.digitalisation_processus_recrutement.repository.DirectionOuMagasinRepository;
+import ma.marjane.digitalisation_processus_recrutement.service.DirectionOuMagasinService;
 import org.springframework.stereotype.Service;
 
 
@@ -14,7 +15,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class DirectionOuMagasinServiceImp {
+public class DirectionOuMagasinServiceImp implements DirectionOuMagasinService {
 
     private final DirectionOuMagasinRepository directionOuMagasinRepository;
     private final DirectionOuMagasinMapperImpl directionOuMagasinMapper;

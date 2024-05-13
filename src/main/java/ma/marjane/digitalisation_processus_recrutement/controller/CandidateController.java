@@ -38,7 +38,7 @@ public class CandidateController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CandidatDto> updateCandidate(@PathVariable UUID id, @Valid @RequestBody CandidatDto candidateDto) {
+    public ResponseEntity<CandidatDto> updateCandidate(@Valid @RequestBody CandidatDto candidateDto) {
         CandidatDto updatedCandidateDto = candidateServiceImp.update(candidateDto);
         return ResponseEntity.status(HttpStatus.OK).body(updatedCandidateDto);
     }

@@ -39,7 +39,7 @@ public class InterviewController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<InterviewDto> updateInterview(@PathVariable UUID id, @Valid @RequestBody InterviewDto interviewDto) {
+    public ResponseEntity<InterviewDto> updateInterview(@Valid @RequestBody InterviewDto interviewDto) {
         InterviewDto updatedInterviewDto = interviewService.update(interviewDto);
         return ResponseEntity.status(HttpStatus.OK).body(updatedInterviewDto);
     }

@@ -1,7 +1,9 @@
 package ma.marjane.digitalisation_processus_recrutement.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import ma.marjane.digitalisation_processus_recrutement.dto.CollaborateurDto;
+import ma.marjane.digitalisation_processus_recrutement.dto.StageDto;
 import ma.marjane.digitalisation_processus_recrutement.service.impl.CollaborateurServiceImp;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +41,12 @@ public class CollaborateurController {
     public ResponseEntity<CollaborateurDto> createCollaborateur(@RequestBody CollaborateurDto collaborateurDto) {
         CollaborateurDto createdCollaborateur = collaborateurService.save(collaborateurDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdCollaborateur);
+    }
+
+    @PutMapping
+    public ResponseEntity<CollaborateurDto> updateTache(@Valid @RequestBody CollaborateurDto collaborateurDto) {
+        CollaborateurDto updatedCollaborateurDto = collaborateurService.update(collaborateurDto);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedCollaborateurDto);
     }
 
     @DeleteMapping("/{id}")

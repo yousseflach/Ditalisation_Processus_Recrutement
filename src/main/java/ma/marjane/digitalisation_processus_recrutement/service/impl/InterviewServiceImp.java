@@ -5,6 +5,7 @@ import ma.marjane.digitalisation_processus_recrutement.dto.InterviewDto;
 import ma.marjane.digitalisation_processus_recrutement.entity.Interview;
 import ma.marjane.digitalisation_processus_recrutement.mapper.impl.InterviewMapperImpl;
 import ma.marjane.digitalisation_processus_recrutement.repository.InterviewRepository;
+import ma.marjane.digitalisation_processus_recrutement.service.InterviewService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class InterviewServiceImp {
+public class InterviewServiceImp implements InterviewService {
 
     private final InterviewRepository interviewRepository;
     private final InterviewMapperImpl interviewMapper;

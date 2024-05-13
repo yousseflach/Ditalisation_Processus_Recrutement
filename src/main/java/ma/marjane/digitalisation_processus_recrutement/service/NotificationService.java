@@ -1,7 +1,6 @@
 package ma.marjane.digitalisation_processus_recrutement.service;
 
 import ma.marjane.digitalisation_processus_recrutement.dto.NotificationDto;
-import ma.marjane.digitalisation_processus_recrutement.dto.RoleDto;
 
 import java.util.Optional;
 import java.util.UUID;

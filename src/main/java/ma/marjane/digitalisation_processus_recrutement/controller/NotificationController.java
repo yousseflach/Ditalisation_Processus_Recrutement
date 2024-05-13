@@ -38,14 +38,14 @@ public class NotificationController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<NotificationDto> updateNotification(@PathVariable UUID id, @Valid @RequestBody NotificationDto notificationDto) {
+    public ResponseEntity<NotificationDto> updateNotification(@Valid @RequestBody NotificationDto notificationDto) {
         NotificationDto updatedNotificationDto = notificationService.update(notificationDto);
         return ResponseEntity.status(HttpStatus.OK).body(updatedNotificationDto);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteNotification(@PathVariable UUID id) {
-        notificationService.delete(id);
+        notificationService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

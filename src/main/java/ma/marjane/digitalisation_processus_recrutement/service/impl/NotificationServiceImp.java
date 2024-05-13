@@ -5,6 +5,7 @@ import ma.marjane.digitalisation_processus_recrutement.dto.NotificationDto;
 import ma.marjane.digitalisation_processus_recrutement.entity.Notification;
 import ma.marjane.digitalisation_processus_recrutement.mapper.impl.NotificationMapperImpl;
 import ma.marjane.digitalisation_processus_recrutement.repository.NotificationRepository;
+import ma.marjane.digitalisation_processus_recrutement.service.NotificationService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class NotificationServiceImp {
+public class NotificationServiceImp implements NotificationService {
 
     private final NotificationRepository notificationRepository;
     private final NotificationMapperImpl notificationMapper;
@@ -42,7 +43,7 @@ public class NotificationServiceImp {
         }
     }
 
-    public void delete(UUID id) {
+    public void deleteById(UUID id) {
         notificationRepository.deleteById(id);
     }
 }

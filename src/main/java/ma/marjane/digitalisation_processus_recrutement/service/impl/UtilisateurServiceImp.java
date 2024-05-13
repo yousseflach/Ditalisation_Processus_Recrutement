@@ -5,6 +5,7 @@ import ma.marjane.digitalisation_processus_recrutement.dto.UtilisateurDto;
 import ma.marjane.digitalisation_processus_recrutement.entity.Utilisateur;
 import ma.marjane.digitalisation_processus_recrutement.mapper.impl.UtilisateurMapperImpl;
 import ma.marjane.digitalisation_processus_recrutement.repository.UtilisateurRepository;
+import ma.marjane.digitalisation_processus_recrutement.service.UtilisateurService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class UtilisateurServiceImp {
+public class UtilisateurServiceImp implements UtilisateurService {
 
     private final UtilisateurRepository utilisateurRepository;
     private final UtilisateurMapperImpl utilisateurMapper;
