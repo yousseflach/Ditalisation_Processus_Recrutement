@@ -12,13 +12,14 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CandidateDto {
+public class CandidatDto {
 
     private UUID id;
-    private String requestId;
+    private String demandeId;
     private String createur;
     private String cv;
     private LocalDateTime dateDeCreation;
     private LocalDateTime dateDeModification;
 
 }
+

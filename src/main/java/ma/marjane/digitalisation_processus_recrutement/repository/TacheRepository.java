@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface TâcheRepository extends JpaRepository<Tache, UUID> {
+public interface TacheRepository extends JpaRepository<Tache, UUID> {
 }

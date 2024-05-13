@@ -1,33 +1,17 @@
 package ma.marjane.digitalisation_processus_recrutement.service;
 
-import ma.marjane.digitalisation_processus_recrutement.entity.Utilisateur;
-import ma.marjane.digitalisation_processus_recrutement.repository.UtilisateurRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import ma.marjane.digitalisation_processus_recrutement.dto.UtilisateurDto;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Service
-public class UtilisateurService {
+public interface UtilisateurService extends BaseService<UtilisateurDto, UUID>{
 
-    @Autowired
-    private UtilisateurRepository repository;
+    Optional<UtilisateurDto> findById(UUID id);
 
-    public List<Utilisateur> findAll() {
-        return repository.findAll();
-    }
+    UtilisateurDto save(UtilisateurDto utilisateurDto);
 
-    public Optional<Utilisateur> findById(UUID id) {
-        return repository.findById(id);
-    }
+    UtilisateurDto update(UtilisateurDto utilisateurDto);
 
-    public Utilisateur save(Utilisateur user) {
-        return repository.save(user);
-    }
-
-    public void deleteById(UUID id) {
-        repository.deleteById(id);
-    }
+    void deleteById(UUID id);
 }

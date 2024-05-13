@@ -1,7 +1,18 @@
 package ma.marjane.digitalisation_processus_recrutement.service;
 
-import org.springframework.stereotype.Service;
+import ma.marjane.digitalisation_processus_recrutement.dto.InterviewDto;
+import ma.marjane.digitalisation_processus_recrutement.dto.RoleDto;
 
-@Service
-public class InterviewService {
+import java.util.Optional;
+import java.util.UUID;
+
+public interface InterviewService extends BaseService<InterviewDto, UUID>{
+
+    Optional<InterviewDto> findById(UUID id);
+
+    InterviewDto save(InterviewDto interviewDto);
+
+    InterviewDto update(InterviewDto interviewDto);
+
+    void deleteById(UUID id);
 }

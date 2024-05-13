@@ -21,10 +21,10 @@ public abstract class DemandeDto {
     private String titrePoste;
     private String superviseur;
     private String formationCandidat;
-    private String niveauÉducation;
-    private String écolesPréférées;
-    private String compétencesTechniques;
-    private String compétencesManageriales;
+    private String niveauEducation;
+    private String ecolesPreferees;
+    private String competencesTechniques;
+    private String competencesManageriales;
     private LocalDateTime dateDeCreation;
     private LocalDateTime dateDeModification;
 }

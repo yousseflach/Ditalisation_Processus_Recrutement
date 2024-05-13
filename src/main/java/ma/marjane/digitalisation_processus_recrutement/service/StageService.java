@@ -1,33 +1,17 @@
 package ma.marjane.digitalisation_processus_recrutement.service;
 
-import ma.marjane.digitalisation_processus_recrutement.entity.Stage;
-import ma.marjane.digitalisation_processus_recrutement.repository.StageRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import ma.marjane.digitalisation_processus_recrutement.dto.StageDto;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Service
-public class StageService {
+public interface StageService extends BaseService<StageDto, UUID>{
 
-    @Autowired
-    private StageRepository repository;
+    Optional<StageDto> findById(UUID id);
 
-    public List<Stage> findAll() {
-        return repository.findAll();
-    }
+    StageDto save(StageDto stageDto);
 
-    public Optional<Stage> findById(UUID id) {
-        return repository.findById(id);
-    }
+    StageDto update(StageDto stageDto);
 
-    public Stage save(Stage internship) {
-        return repository.save(internship);
-    }
-
-    public void deleteById(UUID id) {
-        repository.deleteById(id);
-    }
+    void deleteById(UUID id);
 }

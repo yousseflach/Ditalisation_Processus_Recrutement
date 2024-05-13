@@ -1,29 +1,48 @@
 package ma.marjane.digitalisation_processus_recrutement.controller;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import ma.marjane.digitalisation_processus_recrutement.dto.CollaborateurDto;
-import ma.marjane.digitalisation_processus_recrutement.service.CollaborateurService;
+import ma.marjane.digitalisation_processus_recrutement.service.impl.CollaborateurServiceImp;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("collaborateur")
 @RequiredArgsConstructor
 public class CollaborateurController {
 
-    private final CollaborateurService collaborateurService;
+    private final CollaborateurServiceImp collaborateurService;
 
     @GetMapping("/request")
     public String request() {
         return "Hello World";
     }
 
-    @PostMapping("/save")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public ResponseEntity<?> save(@RequestBody @Valid CollaborateurDto collaborateurDto){
-        collaborateurService.save(collaborateurDto);
-        return ResponseEntity.accepted().build();
+    @GetMapping
+    public ResponseEntity<List<CollaborateurDto>> getAllCollaborateurs() {
+        List<CollaborateurDto> collaborateurs = collaborateurService.findAll();
+        return ResponseEntity.ok(collaborateurs);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CollaborateurDto> getCollaborateurById(@PathVariable UUID id) {
+        return collaborateurService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    public ResponseEntity<CollaborateurDto> createCollaborateur(@RequestBody CollaborateurDto collaborateurDto) {
+        CollaborateurDto createdCollaborateur = collaborateurService.save(collaborateurDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdCollaborateur);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCollaborateur(@PathVariable UUID id) {
+        collaborateurService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

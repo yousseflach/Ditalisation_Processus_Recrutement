@@ -1,11 +1,10 @@
 package ma.marjane.digitalisation_processus_recrutement.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
@@ -15,11 +14,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "utilisateurs")
+@EntityListeners(AuditingEntityListener.class)
 public class Utilisateur {
 
     @Id
     @Column(unique = true, nullable = false)
-    private String matricule; // Matricule
+    private String id; // Matricule
 
     private String nom; // Nom
 

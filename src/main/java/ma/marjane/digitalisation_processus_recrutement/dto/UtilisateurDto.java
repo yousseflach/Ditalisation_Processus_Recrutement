@@ -1,12 +1,9 @@
 package ma.marjane.digitalisation_processus_recrutement.dto;
 
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
@@ -15,7 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UtilisateurDto {
-    private String matricule; // Matricule
+    private String id; // Matricule
     private String nom; // Nom
     private String prenom; // Prénom
     private String uniteOrganisationnelle; // Unité organisationnelle
