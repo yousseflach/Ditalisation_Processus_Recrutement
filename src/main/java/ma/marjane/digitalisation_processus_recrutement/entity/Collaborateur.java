@@ -12,20 +12,21 @@ import lombok.*;
 @Entity
 public class Collaborateur extends Demande {
 
-    @Column(name = "site_rattachment")
-    private String siteRattachement; // Site de rattachement
+    private String natureDeRecrutement;
 
     @Column(name = "creation_reason")
-    private String motifCreation; // Motif de création
+    private String motifCreation;
 
     @Column(name = "position_budgeted")
-    private Boolean posteBudgete; // Budgétisation du poste
+    private Boolean posteBudgete;
 
     @Column(name = "estimated_budget")
-    private Number budgetEstime; // Estimation du budget
+    private Number budgetEstime;
+
+    private String collaborateurARemplacer;
 
     @Column(name = "departure_reason")
-    private String motifDepart; // Motif de départ
+    private String motifDepart;
 
     @Column(name = "functional_supervisor")
     private String superviseurFonctionnel; // Supérieur fonctionnel
@@ -34,14 +35,17 @@ public class Collaborateur extends Demande {
 
     private String relationsFonctionnelles; // Relations fonctionnelles
 
+    private String relationsExterne;
+
     @Column(name = "mission_globale", length = 1024)
     private String missionGlobale; // Mission globale
-
     @Column(name = "principales_activités", length = 1024)
     private String principalesActivites; // Principales activités
-
+    private String formation;
+    private String experience;
+    private String competenceTechnique;
+    private String competenceManagerial;
     private String indicateursQuantitatifs; // Indicateurs quantitatifs
-
     private String indicateursQualitatifs; // Indicateurs qualitatifs
 
     @Column(name = "contract_type")

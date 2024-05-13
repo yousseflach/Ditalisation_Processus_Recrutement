@@ -24,21 +24,17 @@ public abstract class Demande {
     private UUID id;  // Utilisation d'un UUID pour l'ID si vous ne fournissez pas de spécifications de type de données spécifiques pour l'ID.
 
     private String titre;
-    private String description;
     private String type;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "directionOrStore_id")
-    private DirectionOuMagasin directionOuMagasin; // Référence à la Direction ou Magasin associé.
+    private String siteRattachement;
+    private String direction; // Référence à la Direction ou Magasin associé.Magasin
+    private String magasin;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Tache> tâches;
 
     private String titrePoste;
     private String superviseur;
-    private String formationCandidat;
-    private String niveauÉducation;
-    private String écolesPréférées;
     private String compétencesTechniques;
     private String compétencesManageriales;
 
