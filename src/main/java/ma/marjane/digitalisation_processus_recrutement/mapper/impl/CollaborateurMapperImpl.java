@@ -1,5 +1,6 @@
 package ma.marjane.digitalisation_processus_recrutement.mapper.impl;
 
+import ma.marjane.digitalisation_processus_recrutement.dto.CollaborateurDto;
 import ma.marjane.digitalisation_processus_recrutement.entity.Collaborateur;
 import ma.marjane.digitalisation_processus_recrutement.mapper.BaseMapper;
 import org.modelmapper.ModelMapper;

@@ -1,6 +1,7 @@
 package ma.marjane.digitalisation_processus_recrutement.controller;
 
 import lombok.RequiredArgsConstructor;
+import ma.marjane.digitalisation_processus_recrutement.dto.CollaborateurDto;
 import ma.marjane.digitalisation_processus_recrutement.service.impl.CollaborateurServiceImp;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

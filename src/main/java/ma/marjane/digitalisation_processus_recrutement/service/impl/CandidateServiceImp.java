@@ -1,7 +1,7 @@
 package ma.marjane.digitalisation_processus_recrutement.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import ma.marjane.digitalisation_processus_recrutement.dto.CandidateDto;
+import ma.marjane.digitalisation_processus_recrutement.dto.CandidatDto;
 import ma.marjane.digitalisation_processus_recrutement.entity.Candidate;
 import ma.marjane.digitalisation_processus_recrutement.mapper.impl.CandidateMapperImpl;
 import ma.marjane.digitalisation_processus_recrutement.repository.CandidateRepository;
@@ -21,27 +21,27 @@ public class CandidateServiceImp implements CandidatService {
 
 
     @Override
-    public List<CandidateDto> findAll() {
+    public List<CandidatDto> findAll() {
         return candidateRepository.findAll().stream().map(candidateMapper::convertToDto).toList();
     }
 
 
     @Override
-    public Optional<CandidateDto> findById(UUID id) {
+    public Optional<CandidatDto> findById(UUID id) {
         Optional<Candidate> candidatOptional = candidateRepository.findById(id);
         return candidatOptional.map(candidateMapper::convertToDto);
     }
 
     @Override
-    public CandidateDto save(CandidateDto candidateDto) {
+    public CandidatDto save(CandidatDto candidateDto) {
         candidateRepository.save(candidateMapper.convertToEntity(candidateDto));
         return candidateDto;
     }
 
     @Override
-    public CandidateDto update(CandidateDto candidateDto){
+    public CandidatDto update(CandidatDto candidateDto){
         //  find Candidate if exist
-        Optional<CandidateDto> optionalCandidateDto = this.findById(candidateDto.getId());
+        Optional<CandidatDto> optionalCandidateDto = this.findById(candidateDto.getId());
         if (optionalCandidateDto.isPresent()) {
             candidateRepository.save(candidateMapper.convertToEntity(candidateDto));
             return candidateDto;

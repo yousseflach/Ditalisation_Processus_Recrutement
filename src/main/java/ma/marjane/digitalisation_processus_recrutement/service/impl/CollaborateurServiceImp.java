@@ -1,6 +1,7 @@
 package ma.marjane.digitalisation_processus_recrutement.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import ma.marjane.digitalisation_processus_recrutement.dto.CollaborateurDto;
 import ma.marjane.digitalisation_processus_recrutement.entity.Collaborateur;
 import ma.marjane.digitalisation_processus_recrutement.mapper.impl.CollaborateurMapperImpl;
 import ma.marjane.digitalisation_processus_recrutement.repository.CollaborateurRepository;

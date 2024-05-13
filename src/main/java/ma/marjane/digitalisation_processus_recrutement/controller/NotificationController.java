@@ -39,7 +39,7 @@ public class NotificationController {
 
     @PutMapping("/{id}")
     public ResponseEntity<NotificationDto> updateNotification(@PathVariable UUID id, @Valid @RequestBody NotificationDto notificationDto) {
-        NotificationDto updatedNotificationDto = notificationService.update(id, notificationDto);
+        NotificationDto updatedNotificationDto = notificationService.update(notificationDto);
         return ResponseEntity.status(HttpStatus.OK).body(updatedNotificationDto);
     }
 

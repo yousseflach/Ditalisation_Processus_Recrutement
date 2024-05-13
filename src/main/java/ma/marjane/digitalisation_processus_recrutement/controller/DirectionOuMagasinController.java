@@ -39,7 +39,7 @@ public class DirectionOuMagasinController {
 
     @PutMapping("/{id}")
     public ResponseEntity<DirectionOuMagasinDto> updateDirectionOuMagasin(@PathVariable UUID id, @Valid @RequestBody DirectionOuMagasinDto directionOuMagasinDto) {
-        DirectionOuMagasinDto updatedDirectionOuMagasinDto = directionOuMagasinService.update(id, directionOuMagasinDto);
+        DirectionOuMagasinDto updatedDirectionOuMagasinDto = directionOuMagasinService.update(directionOuMagasinDto);
         return ResponseEntity.status(HttpStatus.OK).body(updatedDirectionOuMagasinDto);
     }
 
