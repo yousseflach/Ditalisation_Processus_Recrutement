@@ -7,21 +7,23 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class UtilisateurDto {
-    private String id; // Matricule
-    private String nom; // Nom
-    private String prenom; // Prénom
-    private String uniteOrganisationnelle; // Unité organisationnelle
-    private String direction; // Direction
-    private String enseigneGroupe; // Enseigne groupe
-    private String adresseEmail; // Adresse email
-    private String matriculeN1; // Matricule N1
-    private String matriculeN2; // Matricule N2
-    private String matriculeCOMEX; // Matricule COMEX
+
+    private String nom;
+    private String prenom;
+    private String uniteOrganisationnelle;
+    private String direction;
+    private String enseigneGroupe;
+    private String adresseEmail;
+    private String matriculeN1;
+    private String matriculeN2;
+    private String matriculeCOMEX;
+
     private LocalDateTime dateDeCreation;
     private LocalDateTime dateDeModification;
 }

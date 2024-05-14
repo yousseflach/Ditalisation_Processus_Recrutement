@@ -14,11 +14,11 @@ import java.util.UUID;
 @NoArgsConstructor
 public class InterviewDto {
 
-    private UUID id;
     private String responsableId;
     private String candidatId;
     private String createur;
     private String evaluationDuCandidat;
+
     private LocalDateTime dateDeCreation;
     private LocalDateTime dateDeModification;
 }

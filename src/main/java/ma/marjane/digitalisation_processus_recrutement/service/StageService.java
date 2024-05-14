@@ -11,7 +11,7 @@ public interface StageService extends BaseService<StageDto, UUID>{
 
     StageDto save(StageDto stageDto);
 
-    StageDto update(StageDto stageDto);
+//    StageDto update(StageDto stageDto);
 
     void deleteById(UUID id);
 }

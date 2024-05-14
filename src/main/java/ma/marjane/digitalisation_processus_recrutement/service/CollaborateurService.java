@@ -10,7 +10,7 @@ public interface CollaborateurService extends BaseService<CollaborateurDto, UUID
 
     CollaborateurDto save(CollaborateurDto collaborateurDto);
 
-    CollaborateurDto update(CollaborateurDto collaborateurDto);
+//    CollaborateurDto update(CollaborateurDto collaborateurDto);
 
     void deleteById(UUID id);
 }

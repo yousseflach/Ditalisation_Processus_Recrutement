@@ -37,11 +37,11 @@ public class DirectionOuMagasinController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdDirectionOuMagasinDto);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<DirectionOuMagasinDto> updateDirectionOuMagasin(@Valid @RequestBody DirectionOuMagasinDto directionOuMagasinDto) {
-        DirectionOuMagasinDto updatedDirectionOuMagasinDto = directionOuMagasinService.update(directionOuMagasinDto);
-        return ResponseEntity.status(HttpStatus.OK).body(updatedDirectionOuMagasinDto);
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<DirectionOuMagasinDto> updateDirectionOuMagasin(@Valid @RequestBody DirectionOuMagasinDto directionOuMagasinDto) {
+//        DirectionOuMagasinDto updatedDirectionOuMagasinDto = directionOuMagasinService.update(directionOuMagasinDto);
+//        return ResponseEntity.status(HttpStatus.OK).body(updatedDirectionOuMagasinDto);
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDirectionOuMagasin(@PathVariable UUID id) {

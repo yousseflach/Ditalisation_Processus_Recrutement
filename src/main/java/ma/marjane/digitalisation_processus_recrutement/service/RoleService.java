@@ -11,7 +11,7 @@ public interface RoleService extends BaseService<RoleDto, UUID>{
 
     RoleDto save(RoleDto roleDto);
 
-    RoleDto update(RoleDto roleDto);
+//    RoleDto update(RoleDto roleDto);
 
     void deleteById(UUID id);
 }

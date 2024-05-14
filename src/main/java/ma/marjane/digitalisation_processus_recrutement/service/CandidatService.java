@@ -10,7 +10,7 @@ public interface CandidatService extends BaseService<CandidatDto, UUID>{
 
     CandidatDto save(CandidatDto candidateDto);
 
-    CandidatDto update(CandidatDto candidateDto);
+//    CandidatDto update(CandidatDto candidateDto);
 
     void deleteById(UUID id);
 }

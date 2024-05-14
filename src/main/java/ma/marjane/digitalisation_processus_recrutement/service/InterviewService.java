@@ -11,7 +11,7 @@ public interface InterviewService extends BaseService<InterviewDto, UUID>{
 
     InterviewDto save(InterviewDto interviewDto);
 
-    InterviewDto update(InterviewDto interviewDto);
+//    InterviewDto update(InterviewDto interviewDto);
 
     void deleteById(UUID id);
 }

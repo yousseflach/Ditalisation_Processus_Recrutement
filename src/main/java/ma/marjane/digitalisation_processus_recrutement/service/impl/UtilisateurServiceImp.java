@@ -32,17 +32,17 @@ public class UtilisateurServiceImp implements UtilisateurService {
         return utilisateurDto;
     }
 
-    public UtilisateurDto update(UtilisateurDto utilisateurDto) {
-        Optional<UtilisateurDto> optionalUtilisateurDto = this.findById(utilisateurDto.getId());
-
-        if (optionalUtilisateurDto.isPresent()){
-            utilisateurRepository.save(utilisateurMapper.convertToEntity(utilisateurDto));
-            return utilisateurDto;
-        } else {
-            // Handle case when candidate with given id is not found
-            throw new RuntimeException("Utilisateur with id " + utilisateurDto.getId() + " not found");
-        }
-    }
+//    public UtilisateurDto update(UtilisateurDto utilisateurDto) {
+//        Optional<UtilisateurDto> optionalUtilisateurDto = this.findById(utilisateurDto.getId());
+//
+//        if (optionalUtilisateurDto.isPresent()){
+//            utilisateurRepository.save(utilisateurMapper.convertToEntity(utilisateurDto));
+//            return utilisateurDto;
+//        } else {
+//            // Handle case when candidate with given id is not found
+//            throw new RuntimeException("Utilisateur with id " + utilisateurDto.getId() + " not found");
+//        }
+//    }
 
     public void deleteById(String id) {
         utilisateurRepository.deleteById(id);

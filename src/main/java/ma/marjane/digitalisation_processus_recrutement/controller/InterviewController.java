@@ -38,11 +38,11 @@ public class InterviewController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdInterviewDto);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<InterviewDto> updateInterview(@Valid @RequestBody InterviewDto interviewDto) {
-        InterviewDto updatedInterviewDto = interviewService.update(interviewDto);
-        return ResponseEntity.status(HttpStatus.OK).body(updatedInterviewDto);
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<InterviewDto> updateInterview(@Valid @RequestBody InterviewDto interviewDto) {
+//        InterviewDto updatedInterviewDto = interviewService.update(interviewDto);
+//        return ResponseEntity.status(HttpStatus.OK).body(updatedInterviewDto);
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteInterview(@PathVariable UUID id) {

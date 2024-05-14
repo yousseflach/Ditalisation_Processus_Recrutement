@@ -15,8 +15,8 @@ import java.util.UUID;
 @NoArgsConstructor
 public class DirectionOuMagasinDto {
 
-    private UUID id;
     private String nom;
+
     private LocalDateTime dateDeCreation;
     private LocalDateTime dateDeModification;
 }

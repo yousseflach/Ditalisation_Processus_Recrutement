@@ -35,16 +35,16 @@ public class CollaborateurServiceImp implements CollaborateurService {
         return collaborateurDto;
     }
 
-    public CollaborateurDto update(CollaborateurDto collaborateurDto) {
-        Optional<CollaborateurDto> optionalCollaborateurDto = this.findById(collaborateurDto.getId());
-        if (optionalCollaborateurDto.isPresent()) {
-            collaborateurRepository.save(collaborateurMapper.convertToEntity(collaborateurDto));
-            return collaborateurDto;
-        }else {
-            // Handle case when candidate with given id is not found
-            throw new RuntimeException("Demande Collaborateur with id " + collaborateurDto.getId() + " not found");
-        }
-    }
+//    public CollaborateurDto update(CollaborateurDto collaborateurDto) {
+//        Optional<CollaborateurDto> optionalCollaborateurDto = this.findById(collaborateurDto.getId());
+//        if (optionalCollaborateurDto.isPresent()) {
+//            collaborateurRepository.save(collaborateurMapper.convertToEntity(collaborateurDto));
+//            return collaborateurDto;
+//        }else {
+//            // Handle case when candidate with given id is not found
+//            throw new RuntimeException("Demande Collaborateur with id " + collaborateurDto.getId() + " not found");
+//        }
+//    }
 
     public void deleteById(UUID id) {
         collaborateurRepository.deleteById(id);

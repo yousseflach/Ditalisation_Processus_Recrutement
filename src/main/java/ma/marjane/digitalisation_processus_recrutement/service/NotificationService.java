@@ -11,7 +11,7 @@ public interface NotificationService extends BaseService<NotificationDto, UUID>{
 
     NotificationDto save(NotificationDto notificationDto);
 
-    NotificationDto update(NotificationDto notificationDto);
+//    NotificationDto update(NotificationDto notificationDto);
 
     void deleteById(UUID id);
 }

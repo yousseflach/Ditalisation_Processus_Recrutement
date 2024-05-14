@@ -37,11 +37,11 @@ public class UtilisateurController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUtilisateurDto);
     }
 
-    @PutMapping
-    public ResponseEntity<UtilisateurDto> updateUtilisateur(@Valid @RequestBody UtilisateurDto utilisateurDto) {
-        UtilisateurDto updatedUtilisateurDto = utilisateurService.update(utilisateurDto);
-        return ResponseEntity.status(HttpStatus.OK).body(updatedUtilisateurDto);
-    }
+//    @PutMapping
+//    public ResponseEntity<UtilisateurDto> updateUtilisateur(@Valid @RequestBody UtilisateurDto utilisateurDto) {
+//        UtilisateurDto updatedUtilisateurDto = utilisateurService.update(utilisateurDto);
+//        return ResponseEntity.status(HttpStatus.OK).body(updatedUtilisateurDto);
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUtilisateur(@PathVariable String id) {

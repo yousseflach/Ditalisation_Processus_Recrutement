@@ -10,7 +10,7 @@ public interface UtilisateurService extends BaseService<UtilisateurDto, String>{
 
     UtilisateurDto save(UtilisateurDto utilisateurDto);
 
-    UtilisateurDto update(UtilisateurDto utilisateurDto);
+//    UtilisateurDto update(UtilisateurDto utilisateurDto);
 
     void deleteById(String id);
 }

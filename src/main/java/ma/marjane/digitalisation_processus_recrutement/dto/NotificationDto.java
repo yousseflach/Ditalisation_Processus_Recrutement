@@ -14,10 +14,10 @@ import java.util.UUID;
 @NoArgsConstructor
 public class NotificationDto {
 
-    private UUID id;
     private String objet;
     private String description;
     private String userId;
+
     private LocalDateTime dateDeCreation;
     private LocalDateTime dateDeModification;
 }

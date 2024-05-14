@@ -38,11 +38,11 @@ public class TacheController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdTacheDto);
     }
 
-    @PutMapping
-    public ResponseEntity<TacheDto> updateTache(@Valid @RequestBody TacheDto tacheDto) {
-        TacheDto updatedTacheDto = tacheService.update(tacheDto);
-        return ResponseEntity.status(HttpStatus.OK).body(updatedTacheDto);
-    }
+//    @PutMapping
+//    public ResponseEntity<TacheDto> updateTache(@Valid @RequestBody TacheDto tacheDto) {
+//        TacheDto updatedTacheDto = tacheService.update(tacheDto);
+//        return ResponseEntity.status(HttpStatus.OK).body(updatedTacheDto);
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTache(@PathVariable UUID id) {

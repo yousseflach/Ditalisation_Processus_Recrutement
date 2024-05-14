@@ -33,17 +33,17 @@ public class StageServiceImp implements StageService {
         return stageDto;
     }
 
-    public StageDto update(StageDto stageDto) {
-        Optional<StageDto> optionalStageDto = this.findById(stageDto.getId());
-        if (optionalStageDto.isPresent()) {
-            stageRepository.save(stageMapper.convertToEntity(stageDto));
-            return stageDto;
-
-        }else {
-            // Handle case when candidate with given id is not found
-            throw new RuntimeException("Demand Stage with id " + stageDto.getId() + " not found");
-        }
-    }
+//    public StageDto update(StageDto stageDto) {
+//        Optional<StageDto> optionalStageDto = this.findById(stageDto.getId());
+//        if (optionalStageDto.isPresent()) {
+//            stageRepository.save(stageMapper.convertToEntity(stageDto));
+//            return stageDto;
+//
+//        }else {
+//            // Handle case when candidate with given id is not found
+//            throw new RuntimeException("Demand Stage with id " + stageDto.getId() + " not found");
+//        }
+//    }
 
     public void deleteById(UUID id) {
         stageRepository.deleteById(id);

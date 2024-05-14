@@ -38,18 +38,18 @@ public class CandidateServiceImp implements CandidatService {
         return candidateDto;
     }
 
-    @Override
-    public CandidatDto update(CandidatDto candidateDto){
-        //  find Candidate if exist
-        Optional<CandidatDto> optionalCandidateDto = this.findById(candidateDto.getId());
-        if (optionalCandidateDto.isPresent()) {
-            candidateRepository.save(candidateMapper.convertToEntity(candidateDto));
-            return candidateDto;
-        } else {
-            // Handle case when candidate with given id is not found
-            throw new RuntimeException("Candidate with id " + candidateDto.getId() + " not found");
-        }
-    }
+//    @Override
+//    public CandidatDto update(CandidatDto candidateDto){
+//        //  find Candidate if exist
+//        Optional<CandidatDto> optionalCandidateDto = this.findById(candidateDto.getId());
+//        if (optionalCandidateDto.isPresent()) {
+//            candidateRepository.save(candidateMapper.convertToEntity(candidateDto));
+//            return candidateDto;
+//        } else {
+//            // Handle case when candidate with given id is not found
+//            throw new RuntimeException("Candidate with id " + candidateDto.getId() + " not found");
+//        }
+//    }
 
     @Override
     public void deleteById(UUID id) {

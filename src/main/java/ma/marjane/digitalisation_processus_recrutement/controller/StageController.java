@@ -38,11 +38,11 @@ public class StageController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdStage);
     }
 
-    @PutMapping
-    public ResponseEntity<StageDto> updateTache(@Valid @RequestBody StageDto stageDto) {
-        StageDto updatedStageDto = stageService.update(stageDto);
-        return ResponseEntity.status(HttpStatus.OK).body(updatedStageDto);
-    }
+//    @PutMapping
+//    public ResponseEntity<StageDto> updateTache(@Valid @RequestBody StageDto stageDto) {
+//        StageDto updatedStageDto = stageService.update(stageDto);
+//        return ResponseEntity.status(HttpStatus.OK).body(updatedStageDto);
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStage(@PathVariable UUID id) {

@@ -32,16 +32,16 @@ public class NotificationServiceImp implements NotificationService {
         notificationRepository.save(notificationMapper.convertToEntity(notificationDto));
         return notificationDto;
     }
-    public NotificationDto update(NotificationDto notificationDto) {
-        Optional<NotificationDto> optionalNotificationDto = this.findById(notificationDto.getId());
-        if (optionalNotificationDto.isPresent()) {
-            notificationRepository.save(notificationMapper.convertToEntity(notificationDto));
-            return notificationDto;
-        } else {
-            // Handle case when candidate with given id is not found
-            throw new RuntimeException("Notification with id " + notificationDto.getId() + " not found");
-        }
-    }
+//    public NotificationDto update(NotificationDto notificationDto) {
+//        Optional<NotificationDto> optionalNotificationDto = this.findById(notificationDto.getId());
+//        if (optionalNotificationDto.isPresent()) {
+//            notificationRepository.save(notificationMapper.convertToEntity(notificationDto));
+//            return notificationDto;
+//        } else {
+//            // Handle case when candidate with given id is not found
+//            throw new RuntimeException("Notification with id " + notificationDto.getId() + " not found");
+//        }
+//    }
 
     public void deleteById(UUID id) {
         notificationRepository.deleteById(id);

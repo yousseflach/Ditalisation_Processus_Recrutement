@@ -14,10 +14,10 @@ import java.util.UUID;
 @NoArgsConstructor
 public class CandidatDto {
 
-    private UUID id;
     private String demandeId;
     private String createur;
     private String cv;
+
     private LocalDateTime dateDeCreation;
     private LocalDateTime dateDeModification;
 

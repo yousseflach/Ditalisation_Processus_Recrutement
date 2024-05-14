@@ -43,11 +43,11 @@ public class CollaborateurController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdCollaborateur);
     }
 
-    @PutMapping
-    public ResponseEntity<CollaborateurDto> updateTache(@Valid @RequestBody CollaborateurDto collaborateurDto) {
-        CollaborateurDto updatedCollaborateurDto = collaborateurService.update(collaborateurDto);
-        return ResponseEntity.status(HttpStatus.OK).body(updatedCollaborateurDto);
-    }
+//    @PutMapping
+//    public ResponseEntity<CollaborateurDto> updateTache(@Valid @RequestBody CollaborateurDto collaborateurDto) {
+//        CollaborateurDto updatedCollaborateurDto = collaborateurService.update(collaborateurDto);
+//        return ResponseEntity.status(HttpStatus.OK).body(updatedCollaborateurDto);
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCollaborateur(@PathVariable UUID id) {

@@ -11,7 +11,7 @@ public interface DirectionOuMagasinService extends BaseService<DirectionOuMagasi
 
     DirectionOuMagasinDto save(DirectionOuMagasinDto directionOuMagasinDto);
 
-    DirectionOuMagasinDto update(DirectionOuMagasinDto directionOuMagasinDto);
+//    DirectionOuMagasinDto update(DirectionOuMagasinDto directionOuMagasinDto);
 
     void deleteById(UUID id);
 }

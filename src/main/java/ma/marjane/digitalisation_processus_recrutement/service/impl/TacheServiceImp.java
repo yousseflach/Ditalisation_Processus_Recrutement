@@ -33,16 +33,16 @@ public class TacheServiceImp implements TacheService {
         return tacheDto;
     }
 
-    public TacheDto update(TacheDto tacheDto) {
-        Optional<TacheDto> optionalTacheDto = this.findById(tacheDto.getId());
-        if (optionalTacheDto.isPresent()) {
-            tacheRepository.save(tacheMapper.convertToEntity(tacheDto));
-            return tacheDto;
-        } else {
-            // Handle case when candidate with given id is not found
-            throw new RuntimeException("Tache with id " + tacheDto.getId() + " not found");
-        }
-    }
+//    public TacheDto update(TacheDto tacheDto) {
+//        Optional<TacheDto> optionalTacheDto = this.findById(tacheDto.getId());
+//        if (optionalTacheDto.isPresent()) {
+//            tacheRepository.save(tacheMapper.convertToEntity(tacheDto));
+//            return tacheDto;
+//        } else {
+//            // Handle case when candidate with given id is not found
+//            throw new RuntimeException("Tache with id " + tacheDto.getId() + " not found");
+//        }
+//    }
 
     public void deleteById(UUID id) {
         tacheRepository.deleteById(id);

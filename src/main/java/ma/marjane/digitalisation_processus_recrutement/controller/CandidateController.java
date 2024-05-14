@@ -37,11 +37,11 @@ public class CandidateController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedCandidateDto);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<CandidatDto> updateCandidate(@Valid @RequestBody CandidatDto candidateDto) {
-        CandidatDto updatedCandidateDto = candidateServiceImp.update(candidateDto);
-        return ResponseEntity.status(HttpStatus.OK).body(updatedCandidateDto);
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<CandidatDto> updateCandidate(@Valid @RequestBody CandidatDto candidateDto) {
+//        CandidatDto updatedCandidateDto = candidateServiceImp.update(candidateDto);
+//        return ResponseEntity.status(HttpStatus.OK).body(updatedCandidateDto);
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCandidate(@PathVariable UUID id) {

@@ -33,17 +33,17 @@ public class InterviewServiceImp implements InterviewService {
         return interviewDto;
     }
 
-    public InterviewDto update(InterviewDto interviewDto) {
-        Optional<InterviewDto> optionalInterviewDto = this.findById(interviewDto.getId());
-
-        if (optionalInterviewDto.isPresent()) {
-            interviewRepository.save(interviewMapper.convertToEntity(interviewDto));
-            return interviewDto;
-        } else {
-            // Handle case when candidate with given id is not found
-            throw new RuntimeException("Interview with id " + interviewDto.getId() + " not found");
-        }
-    }
+//    public InterviewDto update(InterviewDto interviewDto) {
+//        Optional<InterviewDto> optionalInterviewDto = this.findById(interviewDto.getId());
+//
+//        if (optionalInterviewDto.isPresent()) {
+//            interviewRepository.save(interviewMapper.convertToEntity(interviewDto));
+//            return interviewDto;
+//        } else {
+//            // Handle case when candidate with given id is not found
+//            throw new RuntimeException("Interview with id " + interviewDto.getId() + " not found");
+//        }
+//    }
 
     public void deleteById(UUID id) {
         interviewRepository.deleteById(id);

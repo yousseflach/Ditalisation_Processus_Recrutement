@@ -11,7 +11,7 @@ public interface BaseService <T, ID>{
 
     T save(T dto) ;
 
-    T update(T dto) ;
+//    T update(T dto) ;
 
     void deleteById(ID id) ;
 }

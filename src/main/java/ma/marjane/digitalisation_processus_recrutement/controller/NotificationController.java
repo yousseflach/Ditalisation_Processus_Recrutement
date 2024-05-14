@@ -37,11 +37,11 @@ public class NotificationController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdNotificationDto);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<NotificationDto> updateNotification(@Valid @RequestBody NotificationDto notificationDto) {
-        NotificationDto updatedNotificationDto = notificationService.update(notificationDto);
-        return ResponseEntity.status(HttpStatus.OK).body(updatedNotificationDto);
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<NotificationDto> updateNotification(@Valid @RequestBody NotificationDto notificationDto) {
+//        NotificationDto updatedNotificationDto = notificationService.update(notificationDto);
+//        return ResponseEntity.status(HttpStatus.OK).body(updatedNotificationDto);
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteNotification(@PathVariable UUID id) {

@@ -34,16 +34,16 @@ public class DirectionOuMagasinServiceImp implements DirectionOuMagasinService {
         return candidateDto;
     }
 
-    public DirectionOuMagasinDto update(DirectionOuMagasinDto directionOuMagasinDto) {
-        Optional<DirectionOuMagasinDto> optionalDirectionOuMagasinDto = this.findById(directionOuMagasinDto.getId());
-        if (optionalDirectionOuMagasinDto.isPresent()) {
-            directionOuMagasinRepository.save(directionOuMagasinMapper.convertToEntity(directionOuMagasinDto));
-            return directionOuMagasinDto;
-        } else {
-            // Handle case when candidate with given id is not found
-            throw new RuntimeException("Direction ou Magasin with id " + directionOuMagasinDto.getId() + " not found");
-        }
-    }
+//    public DirectionOuMagasinDto update(DirectionOuMagasinDto directionOuMagasinDto) {
+//        Optional<DirectionOuMagasinDto> optionalDirectionOuMagasinDto = this.findById(directionOuMagasinDto.getId());
+//        if (optionalDirectionOuMagasinDto.isPresent()) {
+//            directionOuMagasinRepository.save(directionOuMagasinMapper.convertToEntity(directionOuMagasinDto));
+//            return directionOuMagasinDto;
+//        } else {
+//            // Handle case when candidate with given id is not found
+//            throw new RuntimeException("Direction ou Magasin with id " + directionOuMagasinDto.getId() + " not found");
+//        }
+//    }
 
     public void deleteById(UUID id) {
         directionOuMagasinRepository.deleteById(id);
