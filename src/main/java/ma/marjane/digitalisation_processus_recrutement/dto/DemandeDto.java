@@ -30,8 +30,8 @@ public abstract class DemandeDto {
     private String magasin;
     private String titrePoste;
     private String superviseur;
-    private String compétencesTechniques;
-    private String compétencesManageriales;
+    private String competencesTechniques;
+    private String competencesManageriales;
     private LocalDateTime dateDeCreation;
     private LocalDateTime dateDeModification;
 }

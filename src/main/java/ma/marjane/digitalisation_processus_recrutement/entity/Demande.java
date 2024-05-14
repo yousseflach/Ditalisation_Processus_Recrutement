@@ -31,12 +31,12 @@ public abstract class Demande {
     private String magasin;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Tache> tâches;
+    private List<Tache> taches;
 
     private String titrePoste;
     private String superviseur;
-    private String compétencesTechniques;
-    private String compétencesManageriales;
+    private String competencesTechniques;
+    private String competencesManageriales;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)

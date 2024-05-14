@@ -19,8 +19,8 @@ public class Stage extends Demande {
 
     private String stageType;
     private String formationCandidat;
-    private String niveauÉducation;
-    private String écolesPréférées;
+    private String niveauEducation;
+    private String ecolesPreferees;
 
     @Column(name = "nature_of_internship") // Mappe le champ sur le nom de colonne spécifié dans la base de données.
     private String natureDuStage; // Nature du stage

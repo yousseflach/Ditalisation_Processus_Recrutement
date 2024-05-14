@@ -17,8 +17,8 @@ public class StageDto extends DemandeDto {
 
     private String stageType;
     private String formationCandidat;
-    private String niveauÉducation;
-    private String écolesPréférées;
+    private String niveauEducation;
+    private String ecolesPreferees;
     private String natureDuStage;
     private Integer dureeDuStage;
     private LocalDateTime dateDeDebut;
