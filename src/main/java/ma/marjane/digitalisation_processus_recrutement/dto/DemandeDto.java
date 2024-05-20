@@ -14,6 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public abstract class DemandeDto {
 
+    private UUID id;
     private String titre;
     private String type;
     private String siteRattachement;

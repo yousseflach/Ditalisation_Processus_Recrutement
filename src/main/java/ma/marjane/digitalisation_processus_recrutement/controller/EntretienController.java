@@ -2,8 +2,8 @@ package ma.marjane.digitalisation_processus_recrutement.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import ma.marjane.digitalisation_processus_recrutement.dto.InterviewDto;
-import ma.marjane.digitalisation_processus_recrutement.service.impl.InterviewServiceImp;
+import ma.marjane.digitalisation_processus_recrutement.dto.EntretienDto;
+import ma.marjane.digitalisation_processus_recrutement.service.impl.EntretienServiceImp;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,27 +14,27 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/interviews")
-public class InterviewController {
+@RequestMapping("/entretiens")
+public class EntretienController {
 
-    private final InterviewServiceImp interviewService;
+    private final EntretienServiceImp interviewService;
 
     @GetMapping
-    public ResponseEntity<List<InterviewDto>> getAllInterviews() {
-        List<InterviewDto> interviews = interviewService.findAll();
+    public ResponseEntity<List<EntretienDto>> getAllInterviews() {
+        List<EntretienDto> interviews = interviewService.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(interviews);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<InterviewDto> getInterviewById(@PathVariable UUID id) {
+    public ResponseEntity<EntretienDto> getInterviewById(@PathVariable UUID id) {
         return interviewService.findById(id)
                 .map(interviewDto -> ResponseEntity.status(HttpStatus.OK).body(interviewDto))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping
-    public ResponseEntity<InterviewDto> createInterview(@Valid @RequestBody InterviewDto interviewDto) {
-        InterviewDto createdInterviewDto = interviewService.save(interviewDto);
+    public ResponseEntity<EntretienDto> createInterview(@Valid @RequestBody EntretienDto interviewDto) {
+        EntretienDto createdInterviewDto = interviewService.save(interviewDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdInterviewDto);
     }
 

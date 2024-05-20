@@ -3,6 +3,7 @@ package ma.marjane.digitalisation_processus_recrutement.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
+import jakarta.persistence.Table;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -13,6 +14,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @NoArgsConstructor
 @Entity
 @EntityListeners(AuditingEntityListener.class)
+@Table(name = "demande_collaborateurs")
 public class Collaborateur extends Demande {
 
     private String natureDeRecrutement;
@@ -24,7 +26,7 @@ public class Collaborateur extends Demande {
     private Boolean posteBudgete;
 
     @Column(name = "estimated_budget")
-    private Number budgetEstime;
+    private double budgetEstime;
 
     private String collaborateurARemplacer;
 

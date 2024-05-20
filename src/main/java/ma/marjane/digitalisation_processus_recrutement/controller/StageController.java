@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("Stagiaire")
+@RequestMapping("Stagiaire/demandes")
 @RequiredArgsConstructor
 public class StageController {
 

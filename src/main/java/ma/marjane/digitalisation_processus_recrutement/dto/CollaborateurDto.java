@@ -17,7 +17,7 @@ public class CollaborateurDto extends DemandeDto {
     private String natureDeRecrutement;
     private String motifCreation;
     private Boolean posteBudgete;
-    private Number budgetEstime;
+    private double budgetEstime;
     private String collaborateurARemplacer;
     private String motifDepart;
     private String superviseurFonctionnel;

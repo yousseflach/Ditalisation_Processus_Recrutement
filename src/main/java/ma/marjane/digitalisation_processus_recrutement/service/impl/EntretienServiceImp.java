@@ -1,11 +1,11 @@
 package ma.marjane.digitalisation_processus_recrutement.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import ma.marjane.digitalisation_processus_recrutement.dto.InterviewDto;
-import ma.marjane.digitalisation_processus_recrutement.entity.Interview;
-import ma.marjane.digitalisation_processus_recrutement.mapper.impl.InterviewMapperImpl;
-import ma.marjane.digitalisation_processus_recrutement.repository.InterviewRepository;
-import ma.marjane.digitalisation_processus_recrutement.service.InterviewService;
+import ma.marjane.digitalisation_processus_recrutement.dto.EntretienDto;
+import ma.marjane.digitalisation_processus_recrutement.entity.Entretien;
+import ma.marjane.digitalisation_processus_recrutement.mapper.impl.EntretienMapperImpl;
+import ma.marjane.digitalisation_processus_recrutement.repository.EntretienRepository;
+import ma.marjane.digitalisation_processus_recrutement.service.EntretienService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,21 +14,21 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class InterviewServiceImp implements InterviewService {
+public class EntretienServiceImp implements EntretienService {
 
-    private final InterviewRepository interviewRepository;
-    private final InterviewMapperImpl interviewMapper;
+    private final EntretienRepository interviewRepository;
+    private final EntretienMapperImpl interviewMapper;
 
-    public List<InterviewDto> findAll() {
+    public List<EntretienDto> findAll() {
         return interviewRepository.findAll().stream().map(interviewMapper::convertToDto).toList();
     }
 
-    public Optional<InterviewDto> findById(UUID id){
-        Optional<Interview> interviewOptional = interviewRepository.findById(id);
+    public Optional<EntretienDto> findById(UUID id){
+        Optional<Entretien> interviewOptional = interviewRepository.findById(id);
         return interviewOptional.map(interviewMapper::convertToDto);
     }
 
-    public InterviewDto save(InterviewDto interviewDto) {
+    public EntretienDto save(EntretienDto interviewDto) {
         interviewRepository.save(interviewMapper.convertToEntity(interviewDto));
         return interviewDto;
     }

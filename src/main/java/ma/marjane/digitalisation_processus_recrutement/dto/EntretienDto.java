@@ -12,8 +12,9 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class InterviewDto {
+public class EntretienDto {
 
+    private UUID id;
     private String responsableId;
     private String candidatId;
     private String createur;

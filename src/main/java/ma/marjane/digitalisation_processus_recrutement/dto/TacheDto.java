@@ -14,10 +14,14 @@ import java.util.UUID;
 @NoArgsConstructor
 public class TacheDto {
 
+    private UUID id;
     private String objet;
     private String description;
     private String idDemande;
-    private String idUtilisateur;
+    private int step;
+    private String messageN1;
+    private String messageN2;
+    private String messageCOMEX;
 
     private LocalDateTime dateDeCreation;
     private LocalDateTime dateDeModification;

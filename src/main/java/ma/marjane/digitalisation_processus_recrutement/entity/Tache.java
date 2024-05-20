@@ -15,12 +15,12 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "roles")
 @EntityListeners(AuditingEntityListener.class)
+@Table(name = "taches")
 public class Tache {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;  // Utilisation d'un UUID pour l'ID si vous ne fournissez pas de spécifications de type de données spécifiques pour l'ID.
 
     private String objet;
@@ -29,8 +29,13 @@ public class Tache {
     @Column(name = "id_demande")
     private String idDemande;
 
-    @Column(name = "id_utilisateur")
-    private String idUtilisateur;
+    private int step;
+
+    private String messageN1; // Message N1
+
+    private String messageN2; // Message N2
+
+    private String messageCOMEX; // Message COMEX
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
