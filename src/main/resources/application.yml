@@ -1,24 +1,27 @@
 spring:
   application:
     name: Digitalisation_Processus_Recrutement
-  datasource:
-    url: jdbc:mysql://localhost:3306/processus_recrutement?createDatabaseIfNotExist=true&useSSL=false  # Update URL for MySQL
-    username: root
-    driver-class-name: com.mysql.cj.jdbc.Driver  # Update driver class for MySQL
+  db1:
+    datasource:
+      url: jdbc:mysql://localhost:3306/processus_recrutement?createDatabaseIfNotExist=true&useSSL=false  # Update URL for MySQL
+      username: root
+      driver-class-name: com.mysql.cj.jdbc.Driver  # Update driver class for MySQL
+  db2:
+    datasource:
+      url: jdbc:oracle:thin:@192.168.99.154:15212:HPRD
+      username: RECRUTEMENT
+      password: WydQyC*5XUmJ9x
+      driver-class-name: oracle.jdbc.driver.OracleDriver
   jpa:
+    generate-ddl: true
     hibernate:
       ddl-auto: update  # Keep your existing settings
-    show-sql: true  # Keep your existing settings
     properties:
       hibernate:
-        format_sql: true  # Keep your existing settings
+        show_sql: true
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
     database: mysql  # Update database type to MySQL
-    database-platform: org.hibernate.dialect.MySQLDialect  # Update dialect for MySQL
-  second-datasource:
-    url: jdbc:sqlserver://192.168.99.154:15212;databaseName=HR_ACCESS
-    username: RECRUTEMENT
-    password: WydQyC*5XUmJ9x
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
 #spring:
 #  application:
 #    name: Digitalisation_Processus_Recrutement
