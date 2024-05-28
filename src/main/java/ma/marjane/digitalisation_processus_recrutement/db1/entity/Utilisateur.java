@@ -19,26 +19,53 @@ import java.time.LocalDateTime;
 public class Utilisateur {
 
     @Id
-    @Column(unique = true, nullable = false)
-    private String id; // Matricule
+    @Column(name = "matricule")
+    private String matricule;
 
-    private String nom; // Nom
+    @Column(name = "nom")
+    private String nom;
 
-    private String prenom; // Prénom
+    @Column(name = "prenom")
+    private String prenom;
 
-    private String uniteOrganisationnelle; // Unité organisationnelle
+    @Column(name = "societe")
+    private String societe;
 
-    private String direction; // Direction
+    @Column(name = "code_etablissement")
+    private String codeEtablissement;
 
-    private String enseigneGroupe; // Enseigne groupe
+    @Column(name = "etablissement")
+    private String etablissement;
 
-    private String adresseEmail; // Adresse email
+    @Column(name = "code_emploi")
+    private String codeEmploi;
 
-    private String matriculeN1; // Matricule N1
+    @Column(name = "emploi")
+    private String emploi;
 
-    private String matriculeN2; // Matricule N2
+    @Column(name = "code_uo")
+    private String codeUo;
 
-    private String matriculeCOMEX; // Matricule COMEX
+    @Column(name = "uo")
+    private String uo;
+
+    @Column(name = "mail")
+    private String mail;
+
+    @Column(name = "direction")
+    private String direction;
+
+    @Column(name = "manager1")
+    private String manager1;
+
+    @Column(name = "manager2")
+    private String manager2;
+
+    @Column(name = "affectation")
+    private String affectation;
+
+    @Column(name = "comex")
+    private String comex;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)

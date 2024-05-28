@@ -7,8 +7,13 @@ spring:
       username: root
       driver-class-name: com.mysql.cj.jdbc.Driver  # Update driver class for MySQL
     jpa:
+      generate-ddl: true
+      hibernate:
+        ddl-auto: create  # Keep your existing settings
       properties:
         hibernate:
+          show_sql: true
+          format_sql: true
           dialect: org.hibernate.dialect.MySQLDialect
   db2:
     datasource:
@@ -19,15 +24,11 @@ spring:
     jpa:
       properties:
         hibernate:
-          dialect: org.hibernate.dialect.Oracle12cDialect
+          ddl-auto: none
+          show_sql: true
   jpa:
     generate-ddl: true
-    hibernate:
-      ddl-auto: update  # Keep your existing settings
-    properties:
-      hibernate:
-        show_sql: true
-        format_sql: true
+
 #spring:
 #  application:
 #    name: Digitalisation_Processus_Recrutement
