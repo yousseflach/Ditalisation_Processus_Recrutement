@@ -3,7 +3,7 @@ package ma.marjane.digitalisation_processus_recrutement.db1.service.impl;
 import lombok.RequiredArgsConstructor;
 import ma.marjane.digitalisation_processus_recrutement.db1.mapper.impl.CandidateMapperImpl;
 import ma.marjane.digitalisation_processus_recrutement.db1.dto.CandidatDto;
-import ma.marjane.digitalisation_processus_recrutement.db1.entity.Candidate;
+import ma.marjane.digitalisation_processus_recrutement.db1.entity.Candidat;
 import ma.marjane.digitalisation_processus_recrutement.db1.repository.CandidateRepository;
 import ma.marjane.digitalisation_processus_recrutement.db1.service.CandidatService;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class CandidateServiceImp implements CandidatService {
 
     @Override
     public Optional<CandidatDto> findById(UUID id) {
-        Optional<Candidate> candidatOptional = candidateRepository.findById(id);
+        Optional<Candidat> candidatOptional = candidateRepository.findById(id);
         return candidatOptional.map(candidateMapper::convertToDto);
     }
 

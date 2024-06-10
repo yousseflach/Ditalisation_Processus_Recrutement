@@ -7,32 +7,34 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
 
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
-@Table(name = "candidates")
+@Table(name = "interviews")
 @EntityListeners(AuditingEntityListener.class)
-public class Candidate {
+public class Interview {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", updatable = false, nullable = false, columnDefinition = "BINARY(16)")
     private UUID id;
 
-    @Column(name = "request_id")
-    private String requestId;
+    @Column(name = "responsable_id")
+    private String responsableId;
+
+    @Column(name = "candidat_id")
+    private String candidatId;
 
     @Column(name = "createur")
     private String createur;
 
-    @Column(name = "cv")
-    private String cv;
+    @Column(name = "evaluation_du_candidat")
+    private String evaluationDuCandidat;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)

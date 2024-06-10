@@ -1,23 +1,23 @@
 package ma.marjane.digitalisation_processus_recrutement.db1.mapper.impl;
 
 import ma.marjane.digitalisation_processus_recrutement.db1.dto.CandidatDto;
-import ma.marjane.digitalisation_processus_recrutement.db1.entity.Candidate;
+import ma.marjane.digitalisation_processus_recrutement.db1.entity.Candidat;
 import ma.marjane.digitalisation_processus_recrutement.db1.mapper.BaseMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CandidateMapperImpl implements BaseMapper<Candidate, CandidatDto> {
+public class CandidateMapperImpl implements BaseMapper<Candidat, CandidatDto> {
 
     ModelMapper modelMapper = new ModelMapper();
 
     @Override
-    public Candidate convertToEntity(CandidatDto candidateDto) {
-        return modelMapper.map(candidateDto, Candidate.class);
+    public Candidat convertToEntity(CandidatDto candidateDto) {
+        return modelMapper.map(candidateDto, Candidat.class);
     }
 
     @Override
-    public CandidatDto convertToDto(Candidate candidateEntity) {
+    public CandidatDto convertToDto(Candidat candidateEntity) {
         return modelMapper.map(candidateEntity, CandidatDto.class);
     }
 }

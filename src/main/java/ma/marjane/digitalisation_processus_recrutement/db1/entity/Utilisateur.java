@@ -32,25 +32,29 @@ public class Utilisateur {
     private String societe;
 
     @Column(name = "code_etablissement")
-    private String codeEtablissement;
+    private String code_Etablissement;
 
     @Column(name = "etablissement")
     private String etablissement;
 
     @Column(name = "code_emploi")
-    private String codeEmploi;
+    private String code_Emploi;
 
     @Column(name = "emploi")
     private String emploi;
 
     @Column(name = "code_uo")
-    private String codeUo;
+    private String code_uo;
 
     @Column(name = "uo")
     private String uo;
 
     @Column(name = "mail")
     private String mail;
+
+
+    @Column(name = "code_direction")
+    private String code_direction;
 
     @Column(name = "direction")
     private String direction;

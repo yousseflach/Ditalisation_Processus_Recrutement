@@ -17,50 +17,54 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Table(name = "demande_collaborateurs")
 public class Collaborateur extends Demande {
 
+    @Column(name = "nature_de_recrutement")
     private String natureDeRecrutement;
 
-    @Column(name = "creation_reason")
-    private String motifCreation;
 
-    @Column(name = "position_budgeted")
+    @Column(name = "is_budgeted")
     private Boolean posteBudgete;
 
-    @Column(name = "estimated_budget")
-    private double budgetEstime;
-
-    private String collaborateurARemplacer;
-
-    @Column(name = "departure_reason")
-    private String motifDepart;
+    @Column(name = "motif")
+    private String motif;
 
     @Column(name = "functional_supervisor")
     private String superviseurFonctionnel; // Supérieur fonctionnel
 
+    @Column(name = "relations_hierarchiques")
     private String relationsHierarchiques; // Relations hiérarchiques
 
+    @Column(name = "relations_fonctionnelles")
     private String relationsFonctionnelles; // Relations fonctionnelles
 
     private String relationsExterne;
 
     @Column(name = "mission_globale", length = 1024)
     private String missionGlobale; // Mission globale
-    @Column(name = "principales_activités", length = 1024)
+    @Column(name = "principales_activites", length = 1024)
     private String principalesActivites; // Principales activités
-    private String formation;
-    private String experience;
-    private String competenceTechnique;
-    private String competenceManagerial;
-    private String indicateursQuantitatifs; // Indicateurs quantitatifs
-    private String indicateursQualitatifs; // Indicateurs qualitatifs
+
+    private String indicateurs; // Indicateurs quantitatifs
 
     @Column(name = "contract_type")
     private String typeContrat; // Type de contrat
 
-    @Column(name = "Catégorie")
+    @Column(name = "categorie")
     private String categorie; // Catégorie
 
-    @Column(name = "type_recruitment")
+    @Column(name = "type_recrutement")
     private String typeRecrutement; // Type de recrutement
+
+    @Column(name ="societe")
+    private String societe;
+
+    @Column(name ="direction_ou_magasin")
+    private String directionoumagasin;
+
+    @Column(name ="sous_direction")
+    private String sousDirection;
+
+    @Column(name ="niveau_detude")
+    private String niveauDetude;
 
 
 }
