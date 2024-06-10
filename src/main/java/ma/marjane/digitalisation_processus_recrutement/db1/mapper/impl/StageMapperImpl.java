@@ -1,8 +1,8 @@
 package ma.marjane.digitalisation_processus_recrutement.db1.mapper.impl;
 
 import ma.marjane.digitalisation_processus_recrutement.db1.dto.StageDto;
-import ma.marjane.digitalisation_processus_recrutement.db1.mapper.BaseMapper;
 import ma.marjane.digitalisation_processus_recrutement.db1.entity.Stage;
+import ma.marjane.digitalisation_processus_recrutement.db1.mapper.BaseMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 

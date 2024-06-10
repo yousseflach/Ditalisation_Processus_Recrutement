@@ -2,12 +2,11 @@ package ma.marjane.digitalisation_processus_recrutement.db1.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import ma.marjane.digitalisation_processus_recrutement.db1.dto.DirectionOuMagasinDto;
+import ma.marjane.digitalisation_processus_recrutement.db1.entity.DirectionOuMagasin;
 import ma.marjane.digitalisation_processus_recrutement.db1.mapper.impl.DirectionOuMagasinMapperImpl;
 import ma.marjane.digitalisation_processus_recrutement.db1.repository.DirectionOuMagasinRepository;
-import ma.marjane.digitalisation_processus_recrutement.db1.entity.DirectionOuMagasin;
 import ma.marjane.digitalisation_processus_recrutement.db1.service.DirectionOuMagasinService;
 import org.springframework.stereotype.Service;
-
 
 import java.util.List;
 import java.util.Optional;

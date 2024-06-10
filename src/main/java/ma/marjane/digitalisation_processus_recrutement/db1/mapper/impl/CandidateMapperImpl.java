@@ -17,7 +17,7 @@ public class CandidateMapperImpl implements BaseMapper<Candidat, CandidatDto> {
     }
 
     @Override
-    public CandidatDto convertToDto(Candidat candidateEntity) {
-        return modelMapper.map(candidateEntity, CandidatDto.class);
+    public CandidatDto convertToDto(Candidat candidatEntity) {
+        return modelMapper.map(candidatEntity, CandidatDto.class);
     }
 }

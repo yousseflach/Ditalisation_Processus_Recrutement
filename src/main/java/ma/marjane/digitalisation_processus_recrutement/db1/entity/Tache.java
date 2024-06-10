@@ -20,29 +20,16 @@ import java.util.UUID;
 public class Tache {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;  // Utilisation d'un UUID pour l'ID si vous ne fournissez pas de spécifications de type de données spécifiques pour l'ID.
 
-    private String objet;
-    private String description;
-
-    @Column(name = "id_demande")
-    private String idDemande;
-
-    private int step;
-
-    private String messageN1; // Message N1
-
-    private String messageN2; // Message N2
-
-    private String messageCOMEX; // Message COMEX
+    private String etape;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
-    private LocalDateTime dateDeCreation;
+    private LocalDateTime dateDeDebut;
 
-    @LastModifiedDate
-    @Column(insertable = false)
-    private LocalDateTime dateDeModification;
+    @Column(name = "demande_id", nullable = false)
+    private UUID demandeId;  // Référence à la demande associée
 
 }

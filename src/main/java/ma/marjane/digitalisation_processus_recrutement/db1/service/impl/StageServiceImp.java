@@ -2,10 +2,10 @@ package ma.marjane.digitalisation_processus_recrutement.db1.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import ma.marjane.digitalisation_processus_recrutement.db1.dto.StageDto;
-import ma.marjane.digitalisation_processus_recrutement.db1.repository.StageRepository;
-import ma.marjane.digitalisation_processus_recrutement.db1.service.StageService;
 import ma.marjane.digitalisation_processus_recrutement.db1.entity.Stage;
 import ma.marjane.digitalisation_processus_recrutement.db1.mapper.impl.StageMapperImpl;
+import ma.marjane.digitalisation_processus_recrutement.db1.repository.StageRepository;
+import ma.marjane.digitalisation_processus_recrutement.db1.service.StageService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

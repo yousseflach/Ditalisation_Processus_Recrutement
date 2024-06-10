@@ -2,9 +2,9 @@ package ma.marjane.digitalisation_processus_recrutement.db1.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import ma.marjane.digitalisation_processus_recrutement.db1.dto.TacheDto;
-import ma.marjane.digitalisation_processus_recrutement.db1.repository.TacheRepository;
 import ma.marjane.digitalisation_processus_recrutement.db1.entity.Tache;
 import ma.marjane.digitalisation_processus_recrutement.db1.mapper.impl.TacheMapperImpl;
+import ma.marjane.digitalisation_processus_recrutement.db1.repository.TacheRepository;
 import ma.marjane.digitalisation_processus_recrutement.db1.service.TacheService;
 import org.springframework.stereotype.Service;
 

@@ -16,6 +16,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "directions_ou_magasins")
 @EntityListeners(AuditingEntityListener.class)
 public class DirectionOuMagasin {
 

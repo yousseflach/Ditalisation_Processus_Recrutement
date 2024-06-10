@@ -1,59 +1,92 @@
 package ma.marjane.digitalisation_processus_recrutement.db1.controller;
 
 
-import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import ma.marjane.digitalisation_processus_recrutement.db1.dto.UtilisateurDto;
+import ma.marjane.digitalisation_processus_recrutement.db1.entity.ListRH;
 import ma.marjane.digitalisation_processus_recrutement.db1.entity.Utilisateur;
+import ma.marjane.digitalisation_processus_recrutement.db1.mapper.impl.UtilisateurMapperImpl;
+import ma.marjane.digitalisation_processus_recrutement.db1.record.NomPrenomMatricule;
+import ma.marjane.digitalisation_processus_recrutement.db1.repository.ListRHRepository;
 import ma.marjane.digitalisation_processus_recrutement.db1.repository.UtilisateurRepository;
 import ma.marjane.digitalisation_processus_recrutement.db1.service.impl.UtilisateurServiceImp;
 import ma.marjane.digitalisation_processus_recrutement.db2.entity.User;
 import ma.marjane.digitalisation_processus_recrutement.db2.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @RestController
-@RequiredArgsConstructor
-@RequestMapping("/utilisateurs")
+@RequestMapping()
 public class UtilisateurController {
 
-    private final UtilisateurServiceImp utilisateurService;
-    private final UserRepository userRepository;
-    private final UtilisateurRepository utilisateurRepository;
+    @Autowired
+    private UtilisateurServiceImp utilisateurService;
 
-    @GetMapping
-    public ResponseEntity<List<UtilisateurDto>> getAllUtilisateurs() {
-        List<UtilisateurDto> utilisateurs = utilisateurService.findAll();
-        return ResponseEntity.status(HttpStatus.OK).body(utilisateurs);
+    @Autowired
+    private ListRHRepository ListRHRepository;
+
+    @Autowired
+    private UtilisateurRepository utilisateurRepository;
+    @Autowired
+    private UtilisateurMapperImpl utilisateurMapper;
+    @Autowired
+    private UserRepository userRepository;
+
+    @PostMapping("/authenticate")
+    public UtilisateurDto authenticate(@RequestParam String mail) throws Exception {
+        UtilisateurDto utilisateurDTO = utilisateurService.getUserDTOByEmail(mail);
+        // Vous pouvez ajouter ici des vérifications ou des traitements supplémentaires si nécessaire
+        ListRH listRH = ListRHRepository.findByMatricule(utilisateurDTO.getMatricule());
+        if (utilisateurDTO == null) {
+            throw new RuntimeException("Utilisateur non trouvé");
+        }else if (listRH != null){
+            utilisateurDTO.setRole("RH");
+        }
+        else
+            utilisateurDTO.setRole("Manager");
+        return utilisateurDTO;
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<UtilisateurDto> getUtilisateurById(@PathVariable String id) {
-        return utilisateurService.findById(id)
-                .map(utilisateurDto -> ResponseEntity.status(HttpStatus.OK).body(utilisateurDto))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
-
-    @PostMapping
-    public ResponseEntity<UtilisateurDto> createUtilisateur(@Valid @RequestBody UtilisateurDto utilisateurDto) {
-        UtilisateurDto createdUtilisateurDto = utilisateurService.save(utilisateurDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdUtilisateurDto);
-    }
-
-//    @PutMapping
-//    public ResponseEntity<UtilisateurDto> updateUtilisateur(@Valid @RequestBody UtilisateurDto utilisateurDto) {
-//        UtilisateurDto updatedUtilisateurDto = utilisateurService.update(utilisateurDto);
-//        return ResponseEntity.status(HttpStatus.OK).body(updatedUtilisateurDto);
+//    @PostMapping("/demandeur/{matricule}")
+//    public UtilisateurDto getDemandeur(@PathVariable String matricule){
+//        return utilisateurService.getDemandeur(matricule);
+//
 //    }
+    @GetMapping("/Demandeur/{matricule}")
+    public UtilisateurDto getdemandeur(@PathVariable String matricule) {
+        Utilisateur utilisateur =utilisateurRepository.findByMatricule(matricule);
+        return utilisateurMapper.convertToDto(utilisateur);
+    }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUtilisateur(@PathVariable String id) {
-        utilisateurService.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    @GetMapping("/demandeur/listeUo")
+    public List<String> getUO(@RequestParam String matricule) {
+        try {
+            Utilisateur utilisateur = utilisateurRepository.findByMatricule(matricule);
+
+            if (utilisateur == null) {
+                // Si aucun utilisateur n'est trouvé avec ce matricule, retourner une liste vide
+                return Collections.emptyList();
+            }
+
+            // Récupérer la liste des unités organisationnelles du manager 1 de l'utilisateur
+            return utilisateurRepository.findAllUO(utilisateur.getManager1());
+
+        } catch (Exception e) {
+            e.printStackTrace(); // Gérer l'exception ou journaliser le problème
+            return Collections.emptyList(); // Retourner une liste vide en cas d'exception
+        }
+    }
+    @GetMapping("/demandeur/liste_nom_prenom_matricule")
+    public List<NomPrenomMatricule> getNomPrenomMatricule(@RequestParam String matricule) {
+        Utilisateur utilisateur =utilisateurRepository.findByMatricule(matricule);
+        Utilisateur utilisateur2 =utilisateurRepository.findByMatricule(utilisateur.getManager1());
+        return utilisateurRepository.findAllNomPrenomMatricule(utilisateur2.getDirection().trim());
     }
 
 
@@ -76,11 +109,11 @@ public class UtilisateurController {
         utilisateur.setNom(user.getNom());
         utilisateur.setPrenom(user.getPrenom());
         utilisateur.setSociete(user.getSociete());
-        utilisateur.setCodeEtablissement(user.getCodeEtablissement());
+        utilisateur.setCode_Etablissement(user.getCodeEtablissement());
         utilisateur.setEtablissement(user.getEtablissement());
-        utilisateur.setCodeEmploi(user.getCodeEmploi());
+        utilisateur.setCode_Emploi(user.getCodeEmploi());
         utilisateur.setEmploi(user.getEmploi());
-        utilisateur.setCodeUo(user.getCodeUo());
+        utilisateur.setCode_uo(user.getCodeUo());
         utilisateur.setUo(user.getUo());
         utilisateur.setMail(user.getMail());
         utilisateur.setDirection(user.getDirection());
@@ -91,3 +124,4 @@ public class UtilisateurController {
         return utilisateur;
     }
 }
+

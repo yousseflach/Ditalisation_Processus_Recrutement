@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("collaborateur/demandes")
+@RequestMapping("/collaborateur")
 @RequiredArgsConstructor
 public class CollaborateurController {
 
@@ -23,16 +23,16 @@ public class CollaborateurController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CollaborateurDto>> getAllCollaborateurs() {
-        List<CollaborateurDto> collaborateurs = collaborateurService.findAll();
+    public ResponseEntity<List<CollaborateurDto>> getAllCollaborateurs( @RequestParam(required = true) String matricule){
+        List<CollaborateurDto> collaborateurs = collaborateurService.findByMatricule(matricule);
         return ResponseEntity.ok(collaborateurs);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CollaborateurDto> getCollaborateurById(@PathVariable UUID id) {
-        return collaborateurService.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<CollaborateurDto> getCollaborateurById(@PathVariable String matricule) {
+        return collaborateurService.findByMatricule(matricule)
+                .stream().map(ResponseEntity::ok)
+                .findAny().orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping

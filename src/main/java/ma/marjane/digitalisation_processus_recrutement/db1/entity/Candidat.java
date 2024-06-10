@@ -30,7 +30,6 @@ public class Candidat {
 
     private String cvPath;
 
-
     private String commentaire;
 
     @ManyToOne

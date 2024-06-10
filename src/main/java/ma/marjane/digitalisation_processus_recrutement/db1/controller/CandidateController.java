@@ -1,14 +1,14 @@
 package ma.marjane.digitalisation_processus_recrutement.db1.controller;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import ma.marjane.digitalisation_processus_recrutement.db1.entity.Candidat;
 import ma.marjane.digitalisation_processus_recrutement.db1.service.impl.CandidateServiceImp;
-import ma.marjane.digitalisation_processus_recrutement.db1.dto.CandidatDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
+import java.io.IOException;
 import java.util.UUID;
 
 @RestController
@@ -18,23 +18,21 @@ public class CandidateController {
 
     private final CandidateServiceImp candidateServiceImp;
 
-    @GetMapping
-    public ResponseEntity<List<CandidatDto>> findAll() {
-        List<CandidatDto> candidates = candidateServiceImp.findAll();
-        return ResponseEntity.status(HttpStatus.OK).body(candidates);
-    }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<CandidatDto> getCandidateById(@PathVariable UUID id) {
-        return candidateServiceImp.findById(id)
-                .map(candidateDto -> ResponseEntity.status(HttpStatus.OK).body(candidateDto))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
-
-    @PostMapping
-    public ResponseEntity<CandidatDto> createCandidate(@Valid @RequestBody CandidatDto candidateDto) {
-        CandidatDto savedCandidateDto = candidateServiceImp.save(candidateDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedCandidateDto);
+    @PostMapping("/upload")
+    public ResponseEntity<Candidat> uploadCandidat(@RequestParam String nom,
+                                                   @RequestParam String prenom,
+                                                   @RequestParam String email,
+                                                   @RequestParam String telephone,
+                                                   @RequestParam MultipartFile cv,
+                                                   @RequestParam UUID demandeId) throws IOException {
+        Candidat candidat = new Candidat();
+        candidat.setNom(nom);
+        candidat.setPrenom(prenom);
+        candidat.setEmail(email);
+        candidat.setTelephone(telephone);
+        Candidat savedCandidat = candidateServiceImp.saveCandidat(candidat, cv, demandeId);
+        return ResponseEntity.ok(savedCandidat);
     }
 
 //    @PutMapping("/{id}")

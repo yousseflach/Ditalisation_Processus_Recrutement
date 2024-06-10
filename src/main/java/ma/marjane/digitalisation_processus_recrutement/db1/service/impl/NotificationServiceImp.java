@@ -2,10 +2,10 @@ package ma.marjane.digitalisation_processus_recrutement.db1.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import ma.marjane.digitalisation_processus_recrutement.db1.dto.NotificationDto;
+import ma.marjane.digitalisation_processus_recrutement.db1.entity.Notification;
 import ma.marjane.digitalisation_processus_recrutement.db1.mapper.impl.NotificationMapperImpl;
 import ma.marjane.digitalisation_processus_recrutement.db1.repository.NotificationRepository;
 import ma.marjane.digitalisation_processus_recrutement.db1.service.NotificationService;
-import ma.marjane.digitalisation_processus_recrutement.db1.entity.Notification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
