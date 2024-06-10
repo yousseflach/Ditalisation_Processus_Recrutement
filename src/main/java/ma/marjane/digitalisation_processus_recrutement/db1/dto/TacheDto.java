@@ -14,16 +14,8 @@ import java.util.UUID;
 @NoArgsConstructor
 public class TacheDto {
 
-    private UUID id;
-    private String objet;
-    private String description;
-    private String idDemande;
-    private int step;
-    private String messageN1;
-    private String messageN2;
-    private String messageCOMEX;
-
-    private LocalDateTime dateDeCreation;
-    private LocalDateTime dateDeModification;
+    private UUID id;  // Utilisation d'un UUID pour l'ID si vous ne fournissez pas de spécifications de type de données spécifiques pour l'ID.
+    private String etape;
+    private LocalDateTime dateDeDebut;
 
 }
