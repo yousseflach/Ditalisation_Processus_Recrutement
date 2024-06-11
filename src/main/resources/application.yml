@@ -1,20 +1,34 @@
 spring:
   application:
     name: Digitalisation_Processus_Recrutement
+#  db1:
+#    datasource:
+#      jdbc-url: jdbc:mysql://localhost:3306/db1_processus_recrutement?createDatabaseIfNotExist=true&useSSL=false  # Update URL for MySQL
+#      username: root
+#      driver-class-name: com.mysql.cj.jdbc.Driver  # Update driver class for MySQL
+#    jpa:
+#      generate-ddl: true
+#      hibernate:
+#        ddl-auto: create  # Keep your existing settings
+#      properties:
+#        hibernate:
+#          show_sql: true
+#          format_sql: true
+#          dialect: org.hibernate.dialect.MySQLDialect
   db1:
     datasource:
-      jdbc-url: jdbc:mysql://localhost:3306/db1_processus_recrutement?createDatabaseIfNotExist=true&useSSL=false  # Update URL for MySQL
-      username: root
-      driver-class-name: com.mysql.cj.jdbc.Driver  # Update driver class for MySQL
+      jdbc-url: jdbc:sqlserver://alias_sql_prd.cofarma.co.ma:1433;encrypt=true;trustServerCertificate=true;databaseName=HRRecrutement  # URL pour la base de données SQL Server  # Mettez à jour l'URL avec les informations de votre base de données SQL Server
+      username: userhr
+      password: GhTQkNEYjM
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver  # Utilisez le pilote JDBC SQL Server
     jpa:
-      generate-ddl: true
       hibernate:
-        ddl-auto: create  # Keep your existing settings
+        ddl-auto: update  # Conservez vos paramètres existants
+      show-sql: true  # Conservez vos paramètres existants
       properties:
         hibernate:
-          show_sql: true
-          format_sql: true
-          dialect: org.hibernate.dialect.MySQLDialect
+          format_sql: true  # Conservez vos paramètres existants
+          dialect: org.hibernate.dialect.SQLServerDialect  # Ajout du dialecte SQL Server
   db2:
     datasource:
       jdbc-url: jdbc:oracle:thin:@192.168.99.154:15212:HPRD

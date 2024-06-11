@@ -14,7 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 @Data
-@Table(name = "hierarchies")
+@Table(name = "hierarchie")
 public class Hierarchie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -38,7 +38,7 @@ public class UtilisateurController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/authenticate")
+    @PostMapping("/login/authenticate")
     public UtilisateurDto authenticate(@RequestParam String mail) throws Exception {
         UtilisateurDto utilisateurDTO = utilisateurService.getUserDTOByEmail(mail);
         // Vous pouvez ajouter ici des vérifications ou des traitements supplémentaires si nécessaire

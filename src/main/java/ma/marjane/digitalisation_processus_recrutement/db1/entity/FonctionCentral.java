@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "fonctions_central")
+@Table(name = "fonction_central")
 @Data
 public class FonctionCentral {
     @Id
