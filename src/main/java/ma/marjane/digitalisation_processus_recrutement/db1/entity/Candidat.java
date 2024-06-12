@@ -19,24 +19,21 @@ import java.util.UUID;
 public class Candidat {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", updatable = false, nullable = false, columnDefinition = "BINARY(16)")
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id")
     private UUID id;
 
     private String nom;
     private String prenom;
     private String email;
     private String telephone;
-
     private String cvPath;
-
     private String commentaire;
+    @Enumerated(EnumType.STRING)
+    private StatutSelection statutSelection;
 
     @ManyToOne
     @JoinColumn(name = "demande_id")
-    @JsonBackReference // Indique que cette entité est la partie "back" de la relation
+    @JsonBackReference
     private Demande demande;
-
-    @Enumerated(EnumType.STRING)
-    private StatutSelection statutSelection; // Nouvelle propriété pour l'état de sélection
 }

@@ -17,8 +17,8 @@ import java.util.UUID;
 @Table(name = "hierarchie")
 public class Hierarchie {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", updatable = false, nullable = false, columnDefinition = "BINARY(16)")
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id")
     private UUID id;
 
     private String matricule;

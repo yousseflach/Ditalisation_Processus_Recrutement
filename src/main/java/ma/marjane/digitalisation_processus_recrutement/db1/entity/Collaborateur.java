@@ -20,7 +20,6 @@ public class Collaborateur extends Demande {
     @Column(name = "nature_de_recrutement")
     private String natureDeRecrutement;
 
-
     @Column(name = "is_budgeted")
     private Boolean posteBudgete;
 
@@ -28,31 +27,32 @@ public class Collaborateur extends Demande {
     private String motif;
 
     @Column(name = "functional_supervisor")
-    private String superviseurFonctionnel; // Supérieur fonctionnel
+    private String superviseurFonctionnel;
 
     @Column(name = "relations_hierarchiques")
-    private String relationsHierarchiques; // Relations hiérarchiques
+    private String relationsHierarchiques;
 
     @Column(name = "relations_fonctionnelles")
-    private String relationsFonctionnelles; // Relations fonctionnelles
+    private String relationsFonctionnelles;
 
     private String relationsExterne;
 
     @Column(name = "mission_globale", length = 1024)
-    private String missionGlobale; // Mission globale
-    @Column(name = "principales_activites", length = 1024)
-    private String principalesActivites; // Principales activités
+    private String missionGlobale;
 
-    private String indicateurs; // Indicateurs quantitatifs
+    @Column(name = "principales_activites", length = 1024)
+    private String principalesActivites;
+
+    private String indicateurs;
 
     @Column(name = "contract_type")
-    private String typeContrat; // Type de contrat
+    private String typeContrat;
 
     @Column(name = "categorie")
-    private String categorie; // Catégorie
+    private String categorie;
 
     @Column(name = "type_recrutement")
-    private String typeRecrutement; // Type de recrutement
+    private String typeRecrutement;
 
     @Column(name ="societe")
     private String societe;
@@ -65,6 +65,4 @@ public class Collaborateur extends Demande {
 
     @Column(name ="niveau_detude")
     private String niveauDetude;
-
-
 }

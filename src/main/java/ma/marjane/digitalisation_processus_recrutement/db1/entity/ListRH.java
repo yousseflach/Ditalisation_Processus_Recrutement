@@ -17,8 +17,8 @@ import java.util.UUID;
 @Table(name = "ListRH")
 public class ListRH {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;  // Utilisation d'un UUID pour l'ID si vous ne fournissez pas de spécifications de type de données spécifiques pour l'ID.
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
 
     private String mail;
