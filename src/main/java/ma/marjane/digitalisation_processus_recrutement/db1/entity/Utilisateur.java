@@ -55,6 +55,7 @@ public class Utilisateur {
 
     @Column(name = "code_direction")
     private String code_direction;
+    private String login;
 
     @Column(name = "direction")
     private String direction;

@@ -22,8 +22,8 @@ import java.util.UUID;
 public abstract class Demande {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;  // Utilisation d'un UUID pour l'ID si vous ne fournissez pas de spécifications de type de données spécifiques pour l'ID.
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
     private String type;
     private String siteRattachement;
     private String titrePoste;

@@ -22,9 +22,9 @@ public class DirectionOuMagasin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id; // Utilisation d'un UUID pour l'ID si vous ne fournissez pas de spécifications de type de données spécifiques pour l'ID.
+    private UUID id;
 
-    private String nom; // Nom de la direction ou du magasin.
+    private String nom;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)

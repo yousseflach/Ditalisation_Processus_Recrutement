@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 
 
 @RestController
-@RequestMapping()
+@RequestMapping("login")
 public class UtilisateurController {
 
     @Autowired
@@ -38,7 +38,7 @@ public class UtilisateurController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/login/authenticate")
+    @PostMapping("/authenticate")
     public UtilisateurDto authenticate(@RequestParam String mail) throws Exception {
         UtilisateurDto utilisateurDTO = utilisateurService.getUserDTOByEmail(mail);
         // Vous pouvez ajouter ici des vérifications ou des traitements supplémentaires si nécessaire
@@ -84,9 +84,15 @@ public class UtilisateurController {
     }
     @GetMapping("/demandeur/liste_nom_prenom_matricule")
     public List<NomPrenomMatricule> getNomPrenomMatricule(@RequestParam String matricule) {
-        Utilisateur utilisateur =utilisateurRepository.findByMatricule(matricule);
-        Utilisateur utilisateur2 =utilisateurRepository.findByMatricule(utilisateur.getManager1());
-        return utilisateurRepository.findAllNomPrenomMatricule(utilisateur2.getDirection().trim());
+//        Utilisateur utilisateur =utilisateurRepository.findByDirection(matricule);
+//        Utilisateur utilisateur2 =utilisateurRepository.findByMatricule(utilisateur.getManager1());
+        utilisateurRepository.findAllNomPrenomMatricule(matricule).stream().map(npm -> {
+                    NomPrenomMatricule nomPrenomMatricule = new NomPrenomMatricule(npm.nom(), npm.prenom(), npm.matricule());
+                    System.out.println("Processing: " + nomPrenomMatricule.nom() + " " + nomPrenomMatricule.prenom() + " " + nomPrenomMatricule.matricule());
+                    return nomPrenomMatricule;
+                })
+                .collect(Collectors.toList());
+        return utilisateurRepository.findAllNomPrenomMatricule(matricule);
     }
 
 
@@ -105,7 +111,7 @@ public class UtilisateurController {
 
     private Utilisateur mapUserToUtilisateur(User user) {
         Utilisateur utilisateur = new Utilisateur();
-        utilisateur.setMatricule(user.getMatricule());
+        utilisateur.setMatricule(user.getMatricule().trim());
         utilisateur.setNom(user.getNom());
         utilisateur.setPrenom(user.getPrenom());
         utilisateur.setSociete(user.getSociete());

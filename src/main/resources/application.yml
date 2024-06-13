@@ -17,7 +17,7 @@ spring:
 #          dialect: org.hibernate.dialect.MySQLDialect
   db1:
     datasource:
-      jdbc-url: jdbc:sqlserver://alias_sql_prd.cofarma.co.ma:1433;encrypt=true;trustServerCertificate=true;databaseName=HRRecrutement  # URL pour la base de données SQL Server  # Mettez à jour l'URL avec les informations de votre base de données SQL Server
+      jdbc-url: jdbc:sqlserver://192.168.99.245:1433;encrypt=true;trustServerCertificate=true;databaseName=HRRecrutement  # URL pour la base de données SQL Server  # Mettez à jour l'URL avec les informations de votre base de données SQL Server
       username: userhr
       password: GhTQkNEYjM
       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver  # Utilisez le pilote JDBC SQL Server

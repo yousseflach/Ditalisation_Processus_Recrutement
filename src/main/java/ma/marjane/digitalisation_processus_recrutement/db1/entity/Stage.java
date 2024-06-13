@@ -21,18 +21,18 @@ public class Stage extends Demande {
     private String niveauEducation;
     private String ecolesouhetee;
 
-    @Column(name = "natureDuStage") // Mappe le champ sur le nom de colonne spécifié dans la base de données.
-    private String natureDuStage; // Nature du stage
+    @Column(name = "natureDuStage")
+    private String natureDuStage;
 
     @Column(name = "dureeDuStage")
-    private Integer dureeDuStage; // Durée du stage
+    private Integer dureeDuStage;
 
     private LocalDateTime dateDeDebut;
 
-    @Column(name = "contenuDuStage", length = 1024) // Définition de la colonne spécifiée.
-    private String contenuDuStage; // Contenu du stage
+    @Column(name = "contenuDuStage", length = 1024)
+    private String contenuDuStage;
 
     @Column(name = "livrableAttendu", length = 1024)
-    private String livrableAttendu; // Livrable attendu
+    private String livrableAttendu;
 
 }

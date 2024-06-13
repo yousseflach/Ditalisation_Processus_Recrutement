@@ -12,6 +12,10 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, String
     Utilisateur findByMail(String mail);
 
     Utilisateur findByMatricule(String matricule);
+
+//    @Query("SELECT u FROM Utilisateur u WHERE u.direction LIKE %?1%")
+//    List<Utilisateur> findByDirection(String direction);
+
     @Query("SELECT DISTINCT u.societe FROM Utilisateur u where u.societe is not null")
     List<String> findAllBySociete();
 
