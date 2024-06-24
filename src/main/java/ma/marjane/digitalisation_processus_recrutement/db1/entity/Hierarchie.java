@@ -1,5 +1,6 @@
 package ma.marjane.digitalisation_processus_recrutement.db1.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.AllArgsConstructor;
@@ -37,6 +38,8 @@ public class Hierarchie {
     @Column(name = "statut")
     private String statut = "En cours";
 
-    @Column(name = "demande_id", nullable = false)
-    private UUID demandeId;  // Référence à la demande associée
+    @ManyToOne
+    @JoinColumn(name = "demande_id", nullable = false)
+    @JsonIgnore
+    private Demande demande;  // Référence à la demande associée
 }

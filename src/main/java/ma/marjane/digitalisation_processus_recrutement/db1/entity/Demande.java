@@ -47,7 +47,10 @@ public abstract class Demande {
     @Column(name = "creerpar")
     private String creerPar;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Column(name = "niveau_detude")
+    private String niveauDetude;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "demande_id")
     private List<Tache> taches= new ArrayList<>();
 

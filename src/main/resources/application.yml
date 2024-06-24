@@ -27,6 +27,7 @@ spring:
       show-sql: true  # Conservez vos paramètres existants
       properties:
         hibernate:
+#          show_sql: true
           format_sql: true  # Conservez vos paramètres existants
           dialect: org.hibernate.dialect.SQLServerDialect  # Ajout du dialecte SQL Server
   db2:

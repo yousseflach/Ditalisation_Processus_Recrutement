@@ -65,4 +65,7 @@ public class Collaborateur extends Demande {
 
     @Column(name ="niveau_detude")
     private String niveauDetude;
+
+    @Column(name ="niveau_dexperience")
+    private String niveauDexperience;
 }

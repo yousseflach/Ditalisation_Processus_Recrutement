@@ -47,4 +47,9 @@ public class TacheServiceImp implements TacheService {
     public void deleteById(UUID id) {
         tacheRepository.deleteById(id);
     }
+
+    public void deleteByDemandeId(UUID demandeId) {
+        List<Tache> taches = tacheRepository.findByDemandeId(demandeId);
+        tacheRepository.deleteAll(taches);
+    }
 }

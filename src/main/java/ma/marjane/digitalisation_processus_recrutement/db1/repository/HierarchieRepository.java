@@ -16,4 +16,6 @@ public interface HierarchieRepository extends JpaRepository<Hierarchie, UUID> {
     List<Hierarchie> findByMatriculeAndStatut( String matricule, String statut);
 
     List<Hierarchie> findByDemandeIdAndMatricule(UUID demandeId, String matricule);
+
+    Hierarchie findByDemandeIdAndMatriculeAndStatut(UUID demandeId, String matricule, String enCours);
 }

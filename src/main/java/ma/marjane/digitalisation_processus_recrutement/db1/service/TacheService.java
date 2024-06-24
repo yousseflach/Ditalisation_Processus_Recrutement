@@ -14,4 +14,6 @@ public interface TacheService extends BaseService<TacheDto, UUID>{
 //    TacheDto update(TacheDto tacheDto);
 
     void deleteById(UUID id);
+
+    void deleteByDemandeId(UUID demandeId);
 }

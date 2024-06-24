@@ -75,7 +75,7 @@ public class UtilisateurController {
             }
 
             // Récupérer la liste des unités organisationnelles du manager 1 de l'utilisateur
-            return utilisateurRepository.findAllUO(utilisateur.getManager1());
+            return utilisateurRepository.findAllUO(utilisateur.getMatricule());
 
         } catch (Exception e) {
             e.printStackTrace(); // Gérer l'exception ou journaliser le problème

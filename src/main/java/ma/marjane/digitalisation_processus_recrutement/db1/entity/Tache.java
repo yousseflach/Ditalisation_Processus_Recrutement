@@ -1,5 +1,6 @@
 package ma.marjane.digitalisation_processus_recrutement.db1.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -29,7 +30,9 @@ public class Tache {
     @Column(nullable = false, updatable = false)
     private LocalDateTime dateDeDebut;
 
-    @Column(name = "demande_id", nullable = false)
-    private UUID demandeId;
+    @ManyToOne
+    @JoinColumn(name = "demande_id", nullable = false)
+    @JsonIgnore
+    private Demande demande;
 
 }
