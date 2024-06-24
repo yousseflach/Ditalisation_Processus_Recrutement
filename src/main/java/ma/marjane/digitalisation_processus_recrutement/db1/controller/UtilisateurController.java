@@ -5,6 +5,7 @@ import ma.marjane.digitalisation_processus_recrutement.db1.dto.UtilisateurDto;
 import ma.marjane.digitalisation_processus_recrutement.db1.entity.ListRH;
 import ma.marjane.digitalisation_processus_recrutement.db1.entity.Utilisateur;
 import ma.marjane.digitalisation_processus_recrutement.db1.mapper.impl.UtilisateurMapperImpl;
+import ma.marjane.digitalisation_processus_recrutement.db1.record.Listesousdirection;
 import ma.marjane.digitalisation_processus_recrutement.db1.record.NomPrenomMatricule;
 import ma.marjane.digitalisation_processus_recrutement.db1.repository.ListRHRepository;
 import ma.marjane.digitalisation_processus_recrutement.db1.repository.UtilisateurRepository;
@@ -65,7 +66,7 @@ public class UtilisateurController {
     }
 
     @GetMapping("/demandeur/listeUo")
-    public List<String> getUO(@RequestParam String matricule) {
+    public List<Listesousdirection> getUO(@RequestParam String matricule) {
         try {
             Utilisateur utilisateur = utilisateurRepository.findByMatricule(matricule);
 
@@ -82,6 +83,43 @@ public class UtilisateurController {
             return Collections.emptyList(); // Retourner une liste vide en cas d'exception
         }
     }
+
+    //get all emplois by code_uo if code_uo is null return exception or listemplois is empty return message "no emploi"
+    @GetMapping("/demandeur/listeEmploi")
+    public List<String> getEmploi(@RequestParam String code_uo) {
+        try {
+            if (code_uo == null) {
+                throw new Exception("Code UO est null");
+            }
+            List<String> listEmploi = utilisateurRepository.findAllEmploiByCodeUO(code_uo);
+            if (listEmploi.isEmpty()) {
+                throw new Exception("No emploi");
+            }
+            return listEmploi;
+        } catch (Exception e) {
+            e.printStackTrace(); // Gérer l'exception ou journaliser le problème
+            return Collections.singletonList(e.getMessage()); // Retourner un message d'erreur en cas d'exception
+        }
+    }
+
+    //get all emplois by etablissement or direction si direction or etablissement is null return listemplois empty
+    @GetMapping("/demandeur/listeEmploiByDirectionOrEtablissement")
+    public List<String> getEmploiByDirectionOrEtablissement(@RequestParam String direction) {
+        try {
+            if (direction == null) {
+                return Collections.emptyList();
+            }
+            List<String> listEmploi = utilisateurRepository.findAllEmploiByDirectionOrEtablissement(direction);
+            if (listEmploi.isEmpty()) {
+                return Collections.emptyList();
+            }
+            return listEmploi;
+        } catch (Exception e) {
+            return Collections.singletonList(e.getMessage());
+        }
+    }
+
+
     @GetMapping("/demandeur/liste_nom_prenom_matricule")
     public List<NomPrenomMatricule> getNomPrenomMatricule(@RequestParam String matricule) {
 //        Utilisateur utilisateur =utilisateurRepository.findByDirection(matricule);
