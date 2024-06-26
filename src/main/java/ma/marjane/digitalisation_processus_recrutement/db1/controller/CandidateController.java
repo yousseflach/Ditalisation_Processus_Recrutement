@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -40,6 +41,13 @@ public class CandidateController {
 //        CandidatDto updatedCandidateDto = candidateServiceImp.update(candidateDto);
 //        return ResponseEntity.status(HttpStatus.OK).body(updatedCandidateDto);
 //    }
+
+    // get all candidates by collaborator id
+    @GetMapping("/{id}")
+    public ResponseEntity<List<Candidat>> getAllCandidatesByDemandeId(@PathVariable UUID id) {
+        List<Candidat> candidates = candidateServiceImp.getAllCandidatesByDemandeId(id);
+        return ResponseEntity.ok(candidates);
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCandidate(@PathVariable UUID id) {

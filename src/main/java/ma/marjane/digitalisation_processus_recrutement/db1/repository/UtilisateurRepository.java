@@ -3,6 +3,7 @@ package ma.marjane.digitalisation_processus_recrutement.db1.repository;
 import ma.marjane.digitalisation_processus_recrutement.db1.entity.Utilisateur;
 import ma.marjane.digitalisation_processus_recrutement.db1.record.Listesousdirection;
 import ma.marjane.digitalisation_processus_recrutement.db1.record.NomPrenomMatricule;
+import ma.marjane.digitalisation_processus_recrutement.db1.record.SocieteLibelle;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -34,6 +35,10 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, String
     //get all emplois by etablissement or direction
     @Query("SELECT DISTINCT u.emploi FROM Utilisateur u where u.direction = ?1 or u.etablissement = ?1")
     List<String> findAllEmploiByDirectionOrEtablissement(String direction);
+
+    //get all societelibelle from ListSociete
+    @Query("SELECT new ma.marjane.digitalisation_processus_recrutement.db1.record.SocieteLibelle(l.libelle, l.societe) FROM ListSociete l where l.societe is not null and l.libelle is not null")
+    List<SocieteLibelle> findAllSocieteLibelle();
 
 
 }

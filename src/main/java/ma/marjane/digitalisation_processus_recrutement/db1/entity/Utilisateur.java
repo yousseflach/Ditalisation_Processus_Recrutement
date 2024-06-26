@@ -7,6 +7,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -79,5 +80,9 @@ public class Utilisateur {
     @LastModifiedDate
     @Column(insertable = false)
     private LocalDateTime dateDeModification;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "utilisateur_id")
+    private List<Entretien> entretiens;
 
 }

@@ -14,8 +14,8 @@ public class EntretienMapperImpl implements BaseMapper<Entretien, EntretienDto> 
     // Customize ModelMapper configuration
     private void configureMapper() {
         TypeMap<EntretienDto, Entretien> typeMap = modelMapper.createTypeMap(EntretienDto.class, Entretien.class);
-        typeMap.addMapping(EntretienDto::getResponsableId, Entretien::setResponsableId);
-        typeMap.addMapping(EntretienDto::getCandidatId, Entretien::setCandidatId);
+//        typeMap.addMapping(EntretienDto::getResponsableId, Entretien::setResponsableId);
+//        typeMap.addMapping(EntretienDto::getCandidatId, Entretien::setCandidatId);
     }
 
     @Override

@@ -30,17 +30,17 @@ spring:
 #          show_sql: true
           format_sql: true  # Conservez vos paramètres existants
           dialect: org.hibernate.dialect.SQLServerDialect  # Ajout du dialecte SQL Server
-  db2:
-    datasource:
-      jdbc-url: jdbc:oracle:thin:@192.168.99.154:15212:HPRD
-      username: RECRUTEMENT
-      password: WydQyC*5XUmJ9x
-      driver-class-name: oracle.jdbc.driver.OracleDriver
-    jpa:
-      properties:
-        hibernate:
-          ddl-auto: none
-          show_sql: true
+#  db2:
+#    datasource:
+#      jdbc-url: jdbc:oracle:thin:@192.168.99.154:15212:HPRD
+#      username: RECRUTEMENT
+#      password: WydQyC*5XUmJ9x
+#      driver-class-name: oracle.jdbc.driver.OracleDriver
+#    jpa:
+#      properties:
+#        hibernate:
+#          ddl-auto: none
+#          show_sql: true
   jpa:
     generate-ddl: true
 

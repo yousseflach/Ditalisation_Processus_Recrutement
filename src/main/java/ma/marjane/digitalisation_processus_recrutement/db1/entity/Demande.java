@@ -58,8 +58,10 @@ public abstract class Demande {
     @JoinColumn(name = "demande_id")
     private List<Hierarchie> hierarchies= new ArrayList<>();
 
-    @OneToMany(mappedBy = "demande")
-    @JsonIgnore
+//    @OneToMany(mappedBy = "demande")
+//    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "demande_id")
     private List<Candidat> candidates;
 
 

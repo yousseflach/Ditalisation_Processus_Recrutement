@@ -1,5 +1,6 @@
 package ma.marjane.digitalisation_processus_recrutement.db1.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -24,12 +25,6 @@ public class Entretien {
     @Column(name = "id", updatable = false, nullable = false, columnDefinition = "BINARY(16)")
     private UUID id;
 
-    @Column(name = "responsable_id")
-    private String responsableId;
-
-    @Column(name = "candidat_id")
-    private String candidatId;
-
     @Column(name = "createur")
     private String createur;
 
@@ -43,4 +38,14 @@ public class Entretien {
     @LastModifiedDate
     @Column(insertable = false)
     private LocalDateTime dateDeModification;
+
+    @ManyToOne
+    @JoinColumn(name = "candidat_id", nullable = false)
+    @JsonIgnore
+    private Candidat candidat;  // Référence à la candidat associée
+
+    @ManyToOne
+    @JoinColumn(name = "utilisateur_id", nullable = false)
+    @JsonIgnore
+    private Utilisateur utilisateur;  // Référence à la candidat associée
 }

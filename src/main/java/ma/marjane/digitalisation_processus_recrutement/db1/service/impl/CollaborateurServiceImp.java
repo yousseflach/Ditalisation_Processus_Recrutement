@@ -38,7 +38,8 @@ public class CollaborateurServiceImp implements CollaborateurService {
     }
 
     public List<CollaborateurDto> findByMatricule(String matricule) {
-        List<Collaborateur> collaborateurOptional = collaborateurRepository.findByMatricule(matricule);
+        List<Collaborateur> collaborateurOptional = collaborateurRepository.findByMatriculeAndAttributes(matricule,true);
+        System.out.println("collaborateurOptional = " + collaborateurOptional);
         return collaborateurOptional.stream().map(collaborateurMapper::convertToDto).toList();
     }
 
@@ -64,25 +65,6 @@ public class CollaborateurServiceImp implements CollaborateurService {
         if (utilisateur == null) {
             throw new RuntimeException("Utilisateur with matricule " + collaborateurDto.getMatricule() + " not found");
         }
-
-        // Save collaborateur first to generate ID
-        // collaborateur = collaborateurRepository.save(collaborateur);
-
-        // Add hierarchies if required
-//        if (collaborateur.isAttributes() && collaborateur.getHierarchies().isEmpty() && !utilisateur.getMatricule().equals(utilisateur.getComex())) {
-//
-//        } else if (utilisateur.getMatricule().equals(utilisateur.getComex())) {
-//            Hierarchie hierarchieRh = Hierarchie.builder()
-//                    .matricule("RH")
-//                    .demande(collaborateur)
-//                    .nom("RH")
-//                    .prenom("")
-//                    .datedecreation(new Date())
-//                    .statut("En cours")
-//                    .build();
-//
-//            collaborateur.getHierarchies().add(hierarchieRh);
-//        }
 
         Utilisateur manager1 = utilisateurRepository.findByMatricule(utilisateur.getManager1());
 
@@ -112,6 +94,28 @@ public class CollaborateurServiceImp implements CollaborateurService {
 
         // Return the DTO
         return collaborateurMapper.convertToDto(collaborateur);
+    }
+    //save collaborateur  if not exist any collaborateur with attribute false if exist any collaborateur with attribute true deleted the old collaborateur and save the new collaborateur
+
+
+    public CollaborateurDto saveCollaborateur(CollaborateurDto collaborateurDto, String matricule) {
+        // Trouver les collaborateurs avec le matricule et l'attribut spécifique
+        List<Collaborateur> collaborateurs = collaborateurRepository.findByMatriculeAndAttributes(matricule.trim(), false);
+        System.out.println(collaborateurs);
+        // Si plus d'un collaborateur trouvé, les supprimer tous
+        if (collaborateurs.size() > 1) {
+            collaborateurRepository.deleteAll(collaborateurs);
+        } else if (collaborateurs.size() == 1) {
+            // S'il y a exactement un collaborateur trouvé
+            if (collaborateurDto == null) {
+                // Si collaborateurDto est null, retourner le collaborateur existant
+                return collaborateurMapper.convertToDto(collaborateurs.get(0));
+            } else {
+                // Supprimer le collaborateur existant
+                collaborateurRepository.delete(collaborateurs.get(0));
+            }
+        }
+        return null;
     }
 
 //    public CollaborateurDto save(CollaborateurDto collaborateurDto) {
@@ -205,5 +209,16 @@ public class CollaborateurServiceImp implements CollaborateurService {
         } else {
             throw new EntityNotFoundException("Demande not found with id: " + demandeId);
         }
+    }
+
+    public CollaborateurDto sauvegarderdemander(CollaborateurDto collaborateurdto, String matricule) {
+        Collaborateur collaborateur = collaborateurMapper.convertToEntity(collaborateurdto);
+        List<Collaborateur> collaborateurs = collaborateurRepository.findByMatriculeAndAttributes(matricule, false);
+        if (!collaborateurs.isEmpty()) {
+            collaborateurs.forEach(collaborateur1 -> {
+                collaborateurRepository.delete(collaborateur1);
+            });
+        }
+        return collaborateurMapper.convertToDto(collaborateurRepository.save(collaborateur));
     }
 }

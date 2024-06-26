@@ -29,4 +29,5 @@ public abstract class DemandeDto {
     private boolean attributes;
     private String creerPar;
     private List<TacheDto> taches;
+    private List<HierarchieDTO> hierarchies;
 }

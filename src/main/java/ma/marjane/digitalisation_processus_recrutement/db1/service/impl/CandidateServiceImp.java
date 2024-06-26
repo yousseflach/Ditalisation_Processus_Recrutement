@@ -25,6 +25,11 @@ public class CandidateServiceImp {
     private final String uploadDir = "uploads/";
 
     public Candidat saveCandidat(Candidat candidat, MultipartFile cv, UUID demandeId) throws IOException {
+        //check folder exist
+        Path path = Paths.get(uploadDir);
+        if (!Files.exists(path)) {
+            Files.createDirectories(path);
+        }
         Collaborateur collaborateur = collaborateurRepository.findById(demandeId).orElseThrow(() -> new RuntimeException("Demande not found"));
 
 
@@ -77,5 +82,9 @@ public class CandidateServiceImp {
 
     public void deleteById(UUID id) {
         candidateRepository.deleteById(id);
+    }
+
+    public List<Candidat> getAllCandidatesByDemandeId(UUID id) {
+        return candidateRepository.findByDemandeId(id);
     }
 }

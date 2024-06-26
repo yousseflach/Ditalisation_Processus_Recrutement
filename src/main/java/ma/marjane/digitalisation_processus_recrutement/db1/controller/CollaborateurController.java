@@ -6,6 +6,7 @@ import ma.marjane.digitalisation_processus_recrutement.db1.service.impl.Collabor
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.servlet.http.HttpServletRequest;
 
 import java.util.List;
 import java.util.UUID;
@@ -27,6 +28,12 @@ public class CollaborateurController {
         List<CollaborateurDto> collaborateurs = collaborateurService.findByMatricule(matricule);
         return ResponseEntity.ok(collaborateurs);
     }
+    //get all collaborateurs
+    @GetMapping("/all")
+    public ResponseEntity<List<CollaborateurDto>> getAllCollaborateurs() {
+        List<CollaborateurDto> collaborateurs = collaborateurService.findAll();
+        return ResponseEntity.ok(collaborateurs);
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<CollaborateurDto> getCollaborateurById(@PathVariable String matricule) {
@@ -46,6 +53,26 @@ public class CollaborateurController {
 //        CollaborateurDto updatedCollaborateurDto = collaborateurService.update(collaborateurDto);
 //        return ResponseEntity.status(HttpStatus.OK).body(updatedCollaborateurDto);
 //    }
+
+    //save collaborateur  if not exist any collaborateur with attribute false if exist any collaborateur with attribute true deleted the old collaborateur and save the new collaborateur
+
+
+
+
+    @RequestMapping(value = "/sauvegarder", method = {RequestMethod.GET, RequestMethod.POST})
+    public CollaborateurDto handleRequest(@RequestBody(required = false) CollaborateurDto collaborateur,@RequestParam(required = true) String matricule,HttpServletRequest request){
+        String method = request.getMethod();
+        if (method.equals("POST")) {
+
+            return collaborateurService.sauvegarderdemander(collaborateur,matricule);
+        }else {
+
+            return collaborateurService.saveCollaborateur(collaborateur, matricule);
+        }
+
+    }
+
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCollaborateur(@PathVariable UUID id) {

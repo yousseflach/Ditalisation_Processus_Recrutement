@@ -10,8 +10,8 @@ import ma.marjane.digitalisation_processus_recrutement.db1.record.NomPrenomMatri
 import ma.marjane.digitalisation_processus_recrutement.db1.repository.ListRHRepository;
 import ma.marjane.digitalisation_processus_recrutement.db1.repository.UtilisateurRepository;
 import ma.marjane.digitalisation_processus_recrutement.db1.service.impl.UtilisateurServiceImp;
-import ma.marjane.digitalisation_processus_recrutement.db2.entity.User;
-import ma.marjane.digitalisation_processus_recrutement.db2.repository.UserRepository;
+//import ma.marjane.digitalisation_processus_recrutement.db2.entity.User;
+//import ma.marjane.digitalisation_processus_recrutement.db2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,8 +36,8 @@ public class UtilisateurController {
     private UtilisateurRepository utilisateurRepository;
     @Autowired
     private UtilisateurMapperImpl utilisateurMapper;
-    @Autowired
-    private UserRepository userRepository;
+//    @Autowired
+//    private UserRepository userRepository;
 
     @PostMapping("/authenticate")
     public UtilisateurDto authenticate(@RequestParam String mail) throws Exception {
@@ -134,38 +134,38 @@ public class UtilisateurController {
     }
 
 
-    @GetMapping("/save-all-users")
-    public ResponseEntity<String> getAllUsers() {
-        this.saveAll(userRepository.findAllUsers());
-        return ResponseEntity.status(HttpStatus.OK).body("All users have been saved successfully.");
-    }
+//    @GetMapping("/save-all-users")
+//    public ResponseEntity<String> getAllUsers() {
+//        this.saveAll(userRepository.findAllUsers());
+//        return ResponseEntity.status(HttpStatus.OK).body("All users have been saved successfully.");
+//    }
 
-    public void saveAll(List<User> users) {
-        List<Utilisateur> utilisateurs = users.stream()
-                .map(this::mapUserToUtilisateur)
-                .collect(Collectors.toList());
-        utilisateurRepository.saveAll(utilisateurs);
-    }
+//    public void saveAll(List<User> users) {
+//        List<Utilisateur> utilisateurs = users.stream()
+//                .map(this::mapUserToUtilisateur)
+//                .collect(Collectors.toList());
+//        utilisateurRepository.saveAll(utilisateurs);
+//    }
 
-    private Utilisateur mapUserToUtilisateur(User user) {
-        Utilisateur utilisateur = new Utilisateur();
-        utilisateur.setMatricule(user.getMatricule().trim());
-        utilisateur.setNom(user.getNom());
-        utilisateur.setPrenom(user.getPrenom());
-        utilisateur.setSociete(user.getSociete());
-        utilisateur.setCode_Etablissement(user.getCodeEtablissement());
-        utilisateur.setEtablissement(user.getEtablissement());
-        utilisateur.setCode_Emploi(user.getCodeEmploi());
-        utilisateur.setEmploi(user.getEmploi());
-        utilisateur.setCode_uo(user.getCodeUo());
-        utilisateur.setUo(user.getUo());
-        utilisateur.setMail(user.getMail());
-        utilisateur.setDirection(user.getDirection());
-        utilisateur.setManager1(user.getManager1());
-        utilisateur.setManager2(user.getManager2());
-        utilisateur.setAffectation(user.getAffectation());
-        utilisateur.setComex(user.getComex());
-        return utilisateur;
-    }
+//    private Utilisateur mapUserToUtilisateur(User user) {
+//        Utilisateur utilisateur = new Utilisateur();
+//        utilisateur.setMatricule(user.getMatricule().trim());
+//        utilisateur.setNom(user.getNom());
+//        utilisateur.setPrenom(user.getPrenom());
+//        utilisateur.setSociete(user.getSociete());
+//        utilisateur.setCode_Etablissement(user.getCodeEtablissement());
+//        utilisateur.setEtablissement(user.getEtablissement());
+//        utilisateur.setCode_Emploi(user.getCodeEmploi());
+//        utilisateur.setEmploi(user.getEmploi());
+//        utilisateur.setCode_uo(user.getCodeUo());
+//        utilisateur.setUo(user.getUo());
+//        utilisateur.setMail(user.getMail());
+//        utilisateur.setDirection(user.getDirection());
+//        utilisateur.setManager1(user.getManager1());
+//        utilisateur.setManager2(user.getManager2());
+//        utilisateur.setAffectation(user.getAffectation());
+//        utilisateur.setComex(user.getComex());
+//        return utilisateur;
+//    }
 }
 
