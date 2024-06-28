@@ -20,6 +20,9 @@ public class HierarchieService {
     private CollaborateurRepository collaborateurRepository;
 
     @Autowired
+    private  DemandeRepository demandeRepository;
+
+    @Autowired
     private HierarchieMapper hierarchieMapper;
 
     @Autowired
@@ -32,13 +35,13 @@ public class HierarchieService {
     private TacheRepository tacheRepository;
 
 
+
     public List<HierarchieDTO> getAllHierarchies() {
         List<Hierarchie> hierarchies = hierarchieRepository.findAll();
         return hierarchies.stream()
                 .map(hierarchieMapper::convertToDto)
                 .collect(Collectors.toList());
     }
-
     public List<HierarchieDTO> getHierarchieById(UUID demandeId) {
         List<Hierarchie> hierarchies = hierarchieRepository.findByDemandeId(demandeId);
         List<HierarchieDTO> hierarchieDTOS = hierarchies.stream()
@@ -50,9 +53,10 @@ public class HierarchieService {
     //
 //valider demande
     public boolean validerdemande(UUID demandeId, String matricule) {
+        List<ListRH> listRHList = new ArrayList<>();
         // Récupérer la demande
-        Optional<Collaborateur> demandeOpt = collaborateurRepository.findById(demandeId);
-        if (!demandeOpt.isPresent()) {
+        Optional<Demande> demandeOpt = demandeRepository.findById(demandeId);
+        if (demandeOpt.isEmpty()) {
             // Gérer le cas où la demande n'est pas trouvée
             System.err.println("Demande non trouvée pour l'ID : " + demandeId);
             return false;
@@ -69,10 +73,44 @@ public class HierarchieService {
 
         // Créer un ensemble de hiérarchies qui maintient l'ordre d'insertion et supprime les doublons
         Set<String> hierarchies = new LinkedHashSet<>();
+        hierarchies.add(demande.getMatricule().trim());
         if (utilisateur.getManager1() != null) hierarchies.add(utilisateur.getManager1().trim());
         if (utilisateur.getManager2() != null) hierarchies.add(utilisateur.getManager2().trim());
         if (utilisateur.getComex() != null) hierarchies.add(utilisateur.getComex().trim());
 
+        if (demande.getSociete().equals("ACM") || demande.getSociete().equals("TXP") || demande.getSociete().equals("PRX")){
+             listRHList = listRHRepository.findBySocieteAndAffectation("ACM", utilisateur.getAffectation());
+
+
+        }else if (demande.getSociete().equals("DGB") ){
+            // ajouter equipe RH dans l' hierarchie
+             listRHList = listRHRepository.findBySocieteAndAffectation("DGB", utilisateur.getAffectation());
+        }else{
+            listRHList = listRHRepository.findBySocieteAndAffectation("COF", utilisateur.getAffectation());
+        }
+        //verifier si la liste est vide
+        if (listRHList.isEmpty()) {
+            System.err.println("Liste RH vide pour la société : " + demande.getSociete() + " et l'affectation : " + utilisateur.getAffectation());
+            return false;
+        }
+        //trier listRHList par niveau
+        listRHList.sort(Comparator.comparing(ListRH::getNiveau));
+        // Ajouter les matricules des RH dans l'ensemble de hiérarchies
+        listRHList.forEach(listRH -> {
+            hierarchies.add(listRH.getMatricule());
+        });
+        //delete  matricule equals to 012272F  Azami Ayoub
+        hierarchies.remove("012247F");
+        //if demande type equal "Recrutement" remove niveau3 taha
+        if (demande.getType().equals("Recrutement") && demande.getSociete()!="COF"){
+            //converti demande to collaborateur
+            Collaborateur collaborateur = collaborateurRepository.findById(demandeId).get();
+            if (!collaborateur.getCategorie().equals("CSU")){
+                hierarchies.remove("012272F");
+            }else
+                //ajputer ce matricule 012272F a la fin de la liste
+                hierarchies.add("012272F");
+        }
         // Afficher les hiérarchies pour le débogage
         System.out.println(hierarchies);
         // Convertir le LinkedHashSet en ArrayList pour accéder par index
@@ -107,34 +145,60 @@ public class HierarchieService {
                 Hierarchie hierarchie;
                 hierarchie = hierarchieRepository.findByDemandeIdAndMatriculeAndStatut(demandeId, matricule,"En cours");
                 hierarchie.setStatut("Valider");
-                hierarchie.setDatedecreation(new Date());  // Assuming setDatedecreation accepts a Date object
                 hierarchie.setDemande(demande);
                 hierarchieRepository.save(hierarchie);
-                //save hierarchie
-                hierarchie.setDatedecreation(new Date());
-                hierarchie.setMatricule("012279F");
-                hierarchie.setNom("ABARAR HABIB");
-                hierarchie.setPrenom("LAILA");
-                hierarchie.setStatut("En cours");
-                hierarchieRepository.save(hierarchie);
-                System.out.println("La demande est validée."+hierarchie.getNom());
+                if (demande.getType().equals("Recrutement") && !demande.getSociete().equals("COF")){
+                    Utilisateur utilisateur1=null;
+                    //converti demande to collaborateur
+                    Collaborateur collaborateur = collaborateurRepository.findById(demandeId).get();
+                    if (!collaborateur.getCategorie().equals("CSU")){
+                         utilisateur1 = utilisateurRepository.findByMatricule(hierarchiesList.get(hierarchiesList.size() - 2));
+                        //save hierarchie
+                        hierarchie = new Hierarchie();
+                        hierarchie.setDemande(demande);
+                        hierarchie.setStatut("En cours");
+                        hierarchie.setMatricule(hierarchiesList.get(hierarchiesList.size() - 2));
+                        hierarchie.setNom(utilisateur1.getNom());
+                        hierarchie.setPrenom(utilisateur1.getPrenom());
+                        hierarchie.setDatedecreation(new Date());  // Assuming setDatedecreation accepts a Date object
+                        hierarchieRepository.save(hierarchie);
+
+                    }else{
+                         utilisateur1 = utilisateurRepository.findByMatricule(hierarchiesList.get(hierarchiesList.size() - 3));
+                    //save hierarchie
+                    hierarchie = new Hierarchie();
+                    hierarchie.setDemande(demande);
+                    hierarchie.setStatut("En cours");
+                    hierarchie.setMatricule(hierarchiesList.get(hierarchiesList.size() - 3));
+                    hierarchie.setNom(utilisateur1.getNom());
+                    hierarchie.setPrenom(utilisateur1.getPrenom());
+                    hierarchie.setDatedecreation(new Date());  // Assuming setDatedecreation accepts a Date object
+                    hierarchieRepository.save(hierarchie);}
+
+
+                }else{
                 // Ajouter une tâche
-//            Tache tache = Tache.builder()
-//                    .demande(demande)
-//                    .etape("Ajouter Cvs")
-//                    .dateDeDebut(LocalDateTime.now())
-//                    .build();
-//            tacheRepository.save(tache);
-            }
-        } else {
-            // Ajouter une tâche
+                   Utilisateur utilisateur1 = utilisateurRepository.findByMatricule(hierarchiesList.get(hierarchiesList.size() - 3));
+                    //save hierarchie
+                    hierarchie = new Hierarchie();
+                    hierarchie.setDemande(demande);
+                    hierarchie.setStatut("En cours");
+                    hierarchie.setMatricule(hierarchiesList.get(hierarchiesList.size() - 3));
+                    hierarchie.setNom(utilisateur1.getNom());
+                    hierarchie.setPrenom(utilisateur1.getPrenom());
+                    hierarchie.setDatedecreation(new Date());  // Assuming setDatedecreation accepts a Date object
+                    hierarchieRepository.save(hierarchie);
             Tache tache = Tache.builder()
                     .demande(demande)
                     .etape("Ajouter Cvs")
                     .dateDeDebut(LocalDateTime.now())
                     .build();
             tacheRepository.save(tache);
-            System.out.println("Le matricule " + matricule.trim() + " n'existe pas dans les hiérarchies.");
+            }
+            }
+            return true;
+        } else {
+            System.err.println("Le matricule " + matricule.trim() + " n'existe pas dans les hiérarchies.");
             return false;
         }
 
@@ -143,7 +207,6 @@ public class HierarchieService {
         // Vous pouvez ajouter ici des vérifications supplémentaires si nécessaire
         // Par exemple, vérifier si le matricule de l'utilisateur est dans l'ensemble de hiérarchies
 
-        return true;
     }
 
     public boolean refuserdemande(UUID demandeId, String matricule, String commentaire) {
@@ -222,38 +285,11 @@ public class HierarchieService {
 
 
 
-    public List<Collaborateur> getdemandes(String matricule) {
-        List<Hierarchie> hierarchies = hierarchieRepository.findByMatricule(matricule);
-        List<Collaborateur> collaborateurs = new ArrayList<>();
-        ListRH listRH = listRHRepository.findByMatricule(matricule);
-        if (listRH != null){
-//            hierarchies = hierarchieRepository.findByMatricule(matricule);
-            hierarchies.forEach(hierarchie -> {
-                Optional<Collaborateur> collaborateur = collaborateurRepository.findById(hierarchie.getDemande().getId());
-                System.out.println("1 hierarchie demande :"+hierarchie.getDemande().getId());
-                if (collaborateur.isPresent() && hierarchie.getStatut().equals("En cours")){
-                    collaborateurs.add(collaborateur.get());
-                }
-            });
-            hierarchies = hierarchieRepository.findByMatriculeAndStatut(matricule,"Valider");
-            hierarchies.forEach(hierarchie -> {
-                Optional<Collaborateur> collaborateur = collaborateurRepository.findById(hierarchie.getDemande().getId());
-                collaborateurs.add(collaborateur.get());
-            });
+    public List<Demande> getdemandes(String matricule) {
 
-            return collaborateurs;
-        }else{
-            hierarchies.forEach(hierarchie -> {
-                Optional<Collaborateur> collaborateur = collaborateurRepository.findById(hierarchie.getDemande().getId());
-                System.out.println("2 hierarchie demande :"+hierarchie.getNom());
-                if (collaborateur.isPresent() && hierarchie.getStatut().equals("En cours")){
-                    collaborateurs.add(collaborateur.get());
-                }
-            });}
-//        collaborateurs.stream().forEach(collaborateur -> {
-//            System.out.println("3 hierarchie demande :" + collaborateur.getId());
-//        });
-        return collaborateurs;
+        return hierarchieRepository.findByMatriculeAndStatut(matricule,"En cours").stream()
+                .map(Hierarchie::getDemande)
+                .collect(Collectors.toList());
     }
 
     public List<HierarchieDTO> getAllDemandes() {

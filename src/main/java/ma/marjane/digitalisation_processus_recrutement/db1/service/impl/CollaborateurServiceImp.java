@@ -45,6 +45,15 @@ public class CollaborateurServiceImp implements CollaborateurService {
 
     @Override
     public CollaborateurDto save(CollaborateurDto collaborateurDto) {
+        Utilisateur utilisateur = utilisateurRepository.findByMatricule(collaborateurDto.getMatricule());
+        if(utilisateur == null) {
+            throw new RuntimeException("Utilisateur with matricule " + collaborateurDto.getMatricule() + " not found");
+        }
+        if (utilisateur.getSociete().equals("COF"))
+            collaborateurDto.setDirectionoumagasin(utilisateur.getDirection());
+        else
+            collaborateurDto.setDirectionoumagasin(utilisateur.getEtablissement());
+
         // Convert DTO to entity
         Collaborateur collaborateur = collaborateurMapper.convertToEntity(collaborateurDto);
 
@@ -59,12 +68,6 @@ public class CollaborateurServiceImp implements CollaborateurService {
                 .dateDeDebut(LocalDateTime.now())
                 .build();
         collaborateur.getTaches().add(tache);
-
-        // Fetch associated user
-        Utilisateur utilisateur = utilisateurRepository.findByMatricule(collaborateurDto.getMatricule());
-        if (utilisateur == null) {
-            throw new RuntimeException("Utilisateur with matricule " + collaborateurDto.getMatricule() + " not found");
-        }
 
         Utilisateur manager1 = utilisateurRepository.findByMatricule(utilisateur.getManager1());
 
@@ -88,7 +91,13 @@ public class CollaborateurServiceImp implements CollaborateurService {
 
         collaborateur.getHierarchies().add(hierarchie1);
         collaborateur.getHierarchies().add(hierarchie2);
-
+        // delete collaborateur with attribute false
+        List<Collaborateur> collaborateurs = collaborateurRepository.findByMatriculeAndAttributes(collaborateurDto.getMatricule(), false);
+        if (!collaborateurs.isEmpty()) {
+            collaborateurs.forEach(collaborateur1 -> {
+                collaborateurRepository.delete(collaborateur1);
+            });
+        }
         // Save the updated collaborateur with hierarchies
         collaborateur = collaborateurRepository.save(collaborateur);
 
@@ -212,6 +221,7 @@ public class CollaborateurServiceImp implements CollaborateurService {
     }
 
     public CollaborateurDto sauvegarderdemander(CollaborateurDto collaborateurdto, String matricule) {
+        collaborateurdto.setAttributes(false);
         Collaborateur collaborateur = collaborateurMapper.convertToEntity(collaborateurdto);
         List<Collaborateur> collaborateurs = collaborateurRepository.findByMatriculeAndAttributes(matricule, false);
         if (!collaborateurs.isEmpty()) {

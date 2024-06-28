@@ -2,6 +2,7 @@ package ma.marjane.digitalisation_processus_recrutement.db1.controller;
 
 import ma.marjane.digitalisation_processus_recrutement.db1.dto.HierarchieDTO;
 import ma.marjane.digitalisation_processus_recrutement.db1.entity.Collaborateur;
+import ma.marjane.digitalisation_processus_recrutement.db1.entity.Demande;
 import ma.marjane.digitalisation_processus_recrutement.db1.repository.CollaborateurRepository;
 import ma.marjane.digitalisation_processus_recrutement.db1.service.impl.HierarchieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +58,7 @@ public class HierarchieController {
 //        }
 //    }
     @GetMapping("/demandes/{matricule}")
-    public List<Collaborateur> getdemandes(@PathVariable String matricule) {
+    public List<Demande> getdemandes(@PathVariable String matricule) {
         return hierarchieService.getdemandes(matricule);
     }
     @PostMapping("/refuser/{id}/{matricule}/{commentaire}")

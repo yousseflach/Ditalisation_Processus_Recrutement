@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -31,6 +30,8 @@ public abstract class Demande {
     private String competencesTechniques;
     private String competencesManageriales;
     private String formation; // Formation
+    @Column(name ="societe")
+    private String societe;
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime dateDeCreation= LocalDateTime.now();

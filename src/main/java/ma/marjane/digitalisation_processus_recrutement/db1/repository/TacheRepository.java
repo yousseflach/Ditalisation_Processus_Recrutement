@@ -12,4 +12,6 @@ public interface TacheRepository extends JpaRepository<Tache, UUID> {
     void deleteByDemandeId(UUID demandeId);
 
     List<Tache> findByDemandeId(UUID demandeId);
+
+    List<Tache> findByDemandeIdAndEtape(UUID demandeid, String filtreCvs);
 }

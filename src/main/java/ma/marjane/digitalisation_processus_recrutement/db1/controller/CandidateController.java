@@ -2,6 +2,8 @@ package ma.marjane.digitalisation_processus_recrutement.db1.controller;
 
 import lombok.RequiredArgsConstructor;
 import ma.marjane.digitalisation_processus_recrutement.db1.entity.Candidat;
+import ma.marjane.digitalisation_processus_recrutement.db1.entity.Demande;
+import ma.marjane.digitalisation_processus_recrutement.db1.enumeration.StatutSelection;
 import ma.marjane.digitalisation_processus_recrutement.db1.service.impl.CandidateServiceImp;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +20,6 @@ import java.util.UUID;
 public class CandidateController {
 
     private final CandidateServiceImp candidateServiceImp;
-
 
     @PostMapping("/upload")
     public ResponseEntity<Candidat> uploadCandidat(@RequestParam String nom,
@@ -53,5 +54,39 @@ public class CandidateController {
     public ResponseEntity<Void> deleteCandidate(@PathVariable UUID id) {
         candidateServiceImp.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PostMapping("/envoyerCv/{demandeid}")
+    public ResponseEntity<Boolean> envoyerCv(@PathVariable UUID demandeid) {
+        return ResponseEntity.ok(candidateServiceImp.envoyerCv(demandeid));
+    }
+
+    @PostMapping("/envoyerCvrh/{demandeid}")
+    public ResponseEntity<String> envoyerCvrh(
+            @PathVariable("demandeid") String demandeid,
+            @RequestParam List<String> candidats) {
+        System.out.println("Received request to send CVs to HR for demande " + demandeid);
+        System.out.println("Received " + candidats.size() + " candidates.");
+        // Handle the request here. For example, save the candidats to the database.
+        //make them selected
+        for (String candidat : candidats) {
+            Candidat c = candidateServiceImp.getCandidatById(UUID.fromString(candidat));
+            c.setStatutSelection(StatutSelection.CHOISI);
+            candidateServiceImp.saveUpdate(c);
+        }
+        System.out.println("Candidates saved successfully.");
+        //make the others rejected
+        List<Candidat> candidatsList = candidateServiceImp.getAllCandidatesByDemandeId(UUID.fromString(demandeid));
+        for (Candidat candidat : candidatsList) {
+            if (!candidats.contains(candidat.getId().toString())) {
+                candidat.setStatutSelection(StatutSelection.REJETE);
+                candidateServiceImp.saveUpdate(candidat);
+            }
+        }
+        System.out.println("Candidates rejected successfully.");
+        // Send the CVs to HR
+        candidateServiceImp.envoyerCvRh(UUID.fromString(demandeid));
+        // Return a response
+        return ResponseEntity.ok("Candidates received successfully.");
     }
 }

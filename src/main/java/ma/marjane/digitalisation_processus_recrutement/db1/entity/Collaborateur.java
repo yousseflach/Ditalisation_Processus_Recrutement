@@ -7,8 +7,7 @@ import jakarta.persistence.Table;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-@Getter
-@Setter
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -54,8 +53,7 @@ public class Collaborateur extends Demande {
     @Column(name = "type_recrutement")
     private String typeRecrutement;
 
-    @Column(name ="societe")
-    private String societe;
+
 
     @Column(name ="direction_ou_magasin")
     private String directionoumagasin;

@@ -2,6 +2,8 @@ package ma.marjane.digitalisation_processus_recrutement.db1.controller;
 
 import lombok.RequiredArgsConstructor;
 import ma.marjane.digitalisation_processus_recrutement.db1.dto.CollaborateurDto;
+import ma.marjane.digitalisation_processus_recrutement.db1.entity.Demande;
+import ma.marjane.digitalisation_processus_recrutement.db1.repository.DemandeRepository;
 import ma.marjane.digitalisation_processus_recrutement.db1.service.impl.CollaborateurServiceImp;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import java.util.UUID;
 public class CollaborateurController {
 
     private final CollaborateurServiceImp collaborateurService;
+
 
     @GetMapping("/request")
     public String request() {

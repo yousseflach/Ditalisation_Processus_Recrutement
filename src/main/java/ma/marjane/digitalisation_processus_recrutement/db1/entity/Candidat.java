@@ -32,7 +32,7 @@ public class Candidat {
     private String cvPath;
     private String commentaire;
     @Enumerated(EnumType.STRING)
-    private StatutSelection statutSelection;
+    private StatutSelection statutSelection=StatutSelection.CHOISI;
 
 //    @ManyToOne
 //    @JoinColumn(name = "demande_id")
