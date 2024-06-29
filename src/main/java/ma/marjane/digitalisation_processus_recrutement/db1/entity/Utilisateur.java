@@ -82,7 +82,11 @@ public class Utilisateur {
     private LocalDateTime dateDeModification;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "utilisateur_id")
+    @JoinColumn(name = "evaluateur_id")
     private List<Entretien> entretiens;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "createur_id")
+    private List<Entretien> cretedEntretiens;
 
 }

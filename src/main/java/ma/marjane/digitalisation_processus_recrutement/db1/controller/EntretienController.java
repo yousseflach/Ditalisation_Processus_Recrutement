@@ -38,6 +38,13 @@ public class EntretienController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdInterviewDto);
     }
 
+    @PostMapping("/add")
+    public ResponseEntity<EntretienDto> ajouterEntretien(@Valid @RequestBody EntretienDto interviewDto,
+                                                         @RequestParam String createur, @RequestParam String evaluateur, @RequestParam UUID candidatId) {
+        EntretienDto createdInterviewDto = interviewService.add(interviewDto, createur, evaluateur, candidatId);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdInterviewDto);
+    }
+
 //    @PutMapping("/{id}")
 //    public ResponseEntity<InterviewDto> updateInterview(@Valid @RequestBody InterviewDto interviewDto) {
 //        InterviewDto updatedInterviewDto = interviewService.update(interviewDto);

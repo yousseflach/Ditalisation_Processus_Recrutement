@@ -1,8 +1,10 @@
 package ma.marjane.digitalisation_processus_recrutement.db1.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import ma.marjane.digitalisation_processus_recrutement.db1.enumeration.EntretienStatus;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -17,7 +19,6 @@ import java.util.UUID;
 @Builder
 @Entity
 @Table(name = "entretiens")
-@EntityListeners(AuditingEntityListener.class)
 public class Entretien {
 
     @Id
@@ -25,19 +26,18 @@ public class Entretien {
     @Column(name = "id", updatable = false, nullable = false, columnDefinition = "BINARY(16)")
     private UUID id;
 
-    @Column(name = "createur")
-    private String createur;
+
+    @Enumerated(EnumType.STRING)
+    private EntretienStatus status=EntretienStatus.PLANIFIE;
+
+    private int rate;
 
     @Column(name = "evaluation_du_candidat")
     private String evaluationDuCandidat;
 
-    @CreatedDate
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime dateDeCreation;
-
-    @LastModifiedDate
-    @Column(insertable = false)
-    private LocalDateTime dateDeModification;
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+    private LocalDateTime dateEntretien;
 
     @ManyToOne
     @JoinColumn(name = "candidat_id", nullable = false)
@@ -45,7 +45,12 @@ public class Entretien {
     private Candidat candidat;  // Référence à la candidat associée
 
     @ManyToOne
-    @JoinColumn(name = "utilisateur_id", nullable = false)
+    @JoinColumn(name = "createur_id", nullable = false)
     @JsonIgnore
-    private Utilisateur utilisateur;  // Référence à la candidat associée
+    private Utilisateur createur;
+
+    @ManyToOne
+    @JoinColumn(name = "evaluateur_id", nullable = false)
+    @JsonIgnore
+    private Utilisateur evaluateur;
 }
